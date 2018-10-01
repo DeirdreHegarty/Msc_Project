@@ -6,7 +6,17 @@
 * Use dropout instead of regularisation to deal with overfitting
 * Overlap pooling to reduce the size of network
 
-![AlexNet Architecture](images/alex_net1)
+#### The Architecture
+* 5 convolutional layers
+* 3 fully connected layers 
+* Relu is applied after very convolutional and fully connected layer
+* Dropout is applied before the first and the second fully connected 
+* The image size 227 * 227 (instead of 224 * 224)
+
+![Image from AlexNet paper](https://github.com/DeirdreHegarty/Msc_Project/blob/master/images/alex_net1.png)
+
+
+
 
 # Papers
 `https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks`  
