@@ -11,7 +11,7 @@ pip3 install torch torchvision
 
 ```
 
-=== 
+---
 
 following info from - `https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html#define-the-network`
 
@@ -29,7 +29,7 @@ If you have a single sample, just use `input.unsqueeze(0)` to add a fake batch d
 
 Loss Function : A loss function takes the (output, target) pair of inputs, and computes a value that estimates how far away the output is from the target.  
 
-===
+---
 
 following info from - `https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py`
 
