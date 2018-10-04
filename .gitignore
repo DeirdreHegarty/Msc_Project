@@ -2,3 +2,5 @@
 papers
 *.pyc
 code/.venv
+code/MNIST_data
+*.model
