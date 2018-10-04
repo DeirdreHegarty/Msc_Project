@@ -2,5 +2,10 @@
 papers
 *.pyc
 code/.venv
-code/MNIST_data
+code/images
+code/Keras/MNIST/MNIST_data
+*.h5
 *.model
+*.caffemodel
+*.prototxt.txt
+*.whl
