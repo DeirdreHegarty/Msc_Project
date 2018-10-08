@@ -1,0 +1,11 @@
+{% extends 'skeleton.html' %}
+
+{% block upload %}
+	<h1>RESULTS</h1>
+	<a href="{{ url_for('upload') }}">Back</a><p>
+	<ul>
+	{% for file_url in file_urls %}
+	    <li><img style="height: 150px" src="{{ file_url }}"></li>
+	{% endfor %}
+	</ul>
+{% endblock upload%}

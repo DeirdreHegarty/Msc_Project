@@ -1,0 +1,7 @@
+{% extends 'skeleton.html' %}
+
+{% block upload %}
+	<h1>UPLOAD</h1>
+	{{ dropzone.create(action_view='upload') }}
+
+{% endblock upload%}
