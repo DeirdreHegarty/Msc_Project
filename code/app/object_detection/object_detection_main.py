@@ -2,15 +2,10 @@
 # coding: utf-8
 
 import numpy as np
-import os
-import os.path
 import six.moves.urllib as urllib
-import sys
-import tarfile
 import tensorflow as tf
-import zipfile
 import matplotlib.image as mpimg
-import cv2
+import os, os.path, sys, tarfile, zipfile, cv2
 
 from distutils.version import StrictVersion
 from collections import defaultdict
