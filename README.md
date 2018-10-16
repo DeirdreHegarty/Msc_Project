@@ -9,7 +9,7 @@
 - [x] 'getting started' tutorials
 
 ### Week 3
-- [ ] start image labelling prototype
+- [x] start image labelling prototype
 
 ### Week 4
 - [ ] continue working on image labelling prototype
