@@ -9,6 +9,8 @@ from flask_cors import CORS
 
 sys.path.append("/Users/deirdre/git/Msc_Project/code/app/object_detection")
 from object_detection import object_detection_main
+from utils import visualization_utils as vis_util
+from utils.visualization_utils import *
 
 app = Flask(__name__)
 app.debug = True
@@ -71,10 +73,11 @@ def results():
 
 	object_detection_main.load_frozen_model()
 	object_detection_main.detect_image()
+	classes_strs = vis_util.get_class_strs()
 	
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)
 
-	return render_template('results.html',file_urls=file_urls)
+	return render_template('results.html',file_urls=file_urls, classes_strs=classes_strs)
 

@@ -24,7 +24,7 @@ if StrictVersion(tf.__version__) < StrictVersion('1.9.0'):
 # imports from the object detection module.
 from utils import label_map_util
 from utils import visualization_utils as vis_util
-
+from utils.visualization_utils import *
 # *********************** end of imports ******************************* #
 
 # Variables:
@@ -164,6 +164,7 @@ def detect_image():
 
 		# Actual detection.
 		output_dict = run_inference_for_single_image(image_np, detection_graph)
+
 		# Visualization of the results of a detection.
 		vis_util.visualize_boxes_and_labels_on_image_array(
 				image_np,
@@ -174,6 +175,7 @@ def detect_image():
 				instance_masks=output_dict.get('detection_masks'),
 				use_normalized_coordinates=True,
 				line_thickness=8)
+
 		plt.figure(figsize=IMAGE_SIZE)
 		plt.imsave(os.path.join(DETECTED_IMAGES,image_path), image_np)
 

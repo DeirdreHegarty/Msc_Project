@@ -36,6 +36,7 @@ import tensorflow as tf
 
 from object_detection.core import standard_fields as fields
 
+classes_strs = []
 
 _TITLE_LEFT_MARGIN = 10
 _TITLE_TOP_MARGIN = 10
@@ -539,6 +540,8 @@ def draw_mask_on_image_array(image, mask, color='red', alpha=0.4):
   pil_image = Image.composite(pil_solid_color, pil_image, pil_mask)
   np.copyto(image, np.array(pil_image.convert('RGB')))
 
+def get_class_strs():
+  return classes_strs
 
 def visualize_boxes_and_labels_on_image_array(
     image,
@@ -632,11 +635,17 @@ def visualize_boxes_and_labels_on_image_array(
           else:
             display_str = '{}: {}%'.format(display_str, int(100*scores[i]))
         box_to_display_str_map[box].append(display_str)
+
+        # list of classes present in image
+        global classes_strs
+        classes_strs.append(box_to_display_str_map[box])
+
         if agnostic_mode:
           box_to_color_map[box] = 'DarkOrange'
         else:
           box_to_color_map[box] = STANDARD_COLORS[
               classes[i] % len(STANDARD_COLORS)]
+  
 
   # Draw all boxes onto image.
   for box, color in box_to_color_map.items():
@@ -673,7 +682,6 @@ def visualize_boxes_and_labels_on_image_array(
           use_normalized_coordinates=use_normalized_coordinates)
 
   return image
-
 
 def add_cdf_image_summary(values, name):
   """Adds a tf.summary.image for a CDF plot of the values.

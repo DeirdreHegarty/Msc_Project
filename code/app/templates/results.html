@@ -8,4 +8,9 @@
 	    <li><img style="height: 150px" src="{{ file_url }}"></li>
 	{% endfor %}
 	</ul>
+	<ul>
+	{% for class_string in classes_strs %}
+	    <li>{{ class_string }}</li>
+	{% endfor %}
+	</ul>
 {% endblock upload%}
