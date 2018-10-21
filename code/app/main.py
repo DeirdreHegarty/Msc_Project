@@ -3,15 +3,16 @@
 from flask import Flask, request, render_template, session, url_for, redirect, flash
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-import os, argparse
+import os, argparse, sys
 from flask import send_from_directory
-# from sys import path
-# path.append('/Users/deirdre/git/Msc_Project')
-# path.append('..')
-# from Msc_Project.code.main_input import input_type as in_t
+from flask_cors import CORS
+
+sys.path.append("/Users/deirdre/git/Msc_Project/code/app/object_detection")
+from object_detection import object_detection_main
 
 app = Flask(__name__)
 app.debug = True
+CORS(app) # needed for cross-domain requests, allow everything by default
 
 dropzone = Dropzone(app)
 # Dropzone settings
@@ -31,6 +32,9 @@ configure_uploads(app, photos) 			# load the configuration for the upload sets
 
 @app.route("/", methods=['GET', 'POST'])
 def upload():
+	# empty contents of uploads folder
+	object_detection_main.delete_uploads()
+
 	# set session for image results
 	if "file_urls" not in session:
 		session['file_urls'] = []
@@ -64,7 +68,10 @@ def results():
 	# redirect to home if no images to display
 	if "file_urls" not in session or session['file_urls'] == []:
 		return redirect(url_for('upload'))
-		
+
+	object_detection_main.load_frozen_model()
+	object_detection_main.detect_image()
+	
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)

@@ -5,7 +5,7 @@ import numpy as np
 import six.moves.urllib as urllib
 import tensorflow as tf
 import matplotlib.image as mpimg
-import os, os.path, sys, tarfile, zipfile, cv2
+import os, os.path, sys, tarfile, zipfile, cv2, shutil
 
 from distutils.version import StrictVersion
 from collections import defaultdict
@@ -55,6 +55,7 @@ def check_if_model_present():
 	if os.path.exists(MODEL_NAME):
 		print('Model already downloaded')
 	else:
+		print('Downloading model...')
 		downloadModel()
 
 def downloadModel():
@@ -139,15 +140,21 @@ def load_image_into_numpy_array(image):
 	return np.array(image.getdata()).reshape(
 			(im_height, im_width, 3)).astype(np.uint8)
 
+def delete_uploads():
+	shutil.rmtree('/Users/deirdre/git/Msc_Project/code/app/uploads')
+	os.mkdir('/Users/deirdre/git/Msc_Project/code/app/uploads')
+	
 def detect_image():
-	PATH_TO_TEST_IMAGES_DIR = '/Users/deirdre/git/Msc_Project/code/app/object_detection/test_images'
-	TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image{}.jpg'.format(i)) for i in range(1, 3) ]
+	PATH_TO_TEST_IMAGES_DIR = '/Users/deirdre/git/Msc_Project/code/app/uploads'
+	TEST_IMAGE_PATHS = [file for file in os.listdir(PATH_TO_TEST_IMAGES_DIR) if file.endswith('.jpg') or file.endswith('.jpeg')]
+	DETECTED_IMAGES = '/Users/deirdre/git/Msc_Project/code/app/detected_images'
+
 	# Size, in inches, of the output images.
 	IMAGE_SIZE = (12, 8)
+	# import pdb; pdb.set_trace()
 
 	for image_path in TEST_IMAGE_PATHS:
-		image = Image.open(image_path)
-		print(image_path)
+		image = Image.open(os.path.join(PATH_TO_TEST_IMAGES_DIR,image_path))
 
 		# the array based representation of the image will be used later in order to prepare the
 		# result image with boxes and labels on it.
@@ -168,8 +175,8 @@ def detect_image():
 				use_normalized_coordinates=True,
 				line_thickness=8)
 		plt.figure(figsize=IMAGE_SIZE)
-		plt.imshow(image_np)
-		plt.show() # needed to display the output img
+		plt.imsave(os.path.join(DETECTED_IMAGES,image_path), image_np)
+
 
 def detect_webcam():
 	while True:
@@ -183,21 +190,21 @@ def detect_webcam():
 
 	  # Visualization of the results of a detection.
 	  vis_util.visualize_boxes_and_labels_on_image_array(
-	      image_np,
-	      output_dict['detection_boxes'],
-	      output_dict['detection_classes'],
-	      output_dict['detection_scores'],
-	      category_index,
-	      instance_masks=output_dict.get('detection_masks'),
-	      use_normalized_coordinates=True,
-	      line_thickness=8)
+		  image_np,
+		  output_dict['detection_boxes'],
+		  output_dict['detection_classes'],
+		  output_dict['detection_scores'],
+		  category_index,
+		  instance_masks=output_dict.get('detection_masks'),
+		  use_normalized_coordinates=True,
+		  line_thickness=8)
 
 	  cv2.imshow('prototype', cv2.resize(image_np, (800,600)))
 	  if cv2.waitKey(25) & 0xFF == ord('q'):
-	      cv.destroyAllWindows()
-	      break 
+		  cv.destroyAllWindows()
+		  break 
 
 # check, load then detect
-check_if_model_present()
-load_frozen_model()
-detect_image()
+# check_if_model_present()
+# load_frozen_model()
+# detect_image()
