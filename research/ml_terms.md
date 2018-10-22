@@ -77,3 +77,7 @@
 **Autoencoder** - A autoencoder is a neural network that has three layers: an input layer, a hidden (encoding) layer, and a decoding layer. The network is trained to reconstruct its inputs, which forces the hidden layer to try to learn good representations of the inputs.  
 
 ![Autoencoder](https://github.com/DeirdreHegarty/Msc_Project/blob/master/images/encoder.png)
+
+**Average Precision** - (AP), more commonly, further averaged over all queries and reported as a single score — **Mean Average Precision (MAP)** — is a very popular performance measure in information retrieval.  
+
+**Mean Average Precision** - The average precision (AP) is the area under the PR curve. First the AP is computed for each class, and then averaged over the different classes. The end result is the mAP.  

@@ -16,6 +16,7 @@
 
 ### Week 5
 - [x] finish image labelling prototype
+- [ ] documentation for project to date
 - [ ] identify question
 - [ ] identify audience
 - [ ] research testing methods for Flask & Tensorflow
