@@ -46,11 +46,12 @@ app
 
 ```
 
-*Image Labelleing Prototype* is a Flask application with a TensorFlow backend. The prototype offers the following functionality:
+*Image Labelling Prototype* is a Flask application with a TensorFlow backend. The prototype offers the following functionality:
 
 * To upload images:
   * drag and drop image functionality
   * file explorer to choose upload image
+  * **accepted image extensions = '.jpg', '.jpeg', 'png'**
 * Output object detected image with bounding boxes & labels
 * Output a list of detected classes (defined by COCO dataset)   
 
@@ -80,4 +81,4 @@ An output image is generated and written to `/detected_images`; this image will 
 * `@app.route('/results')`
   * triggers tf model to load
   * triggers tf object detection on uploaded images
-  * accepts list of detected classes & displays list along with output image
+  * accepts list of detected classes & displays list along with uploaded image
