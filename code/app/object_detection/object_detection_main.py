@@ -13,6 +13,7 @@ from io import StringIO
 from matplotlib import pyplot as plt
 from PIL import Image
 from pathlib import Path
+from os.path import splitext
 
 # path to project 
 sys.path.append("/Users/deirdre/git/Msc_Project/code/app/")
@@ -143,10 +144,12 @@ def load_image_into_numpy_array(image):
 def delete_uploads():
 	shutil.rmtree('/Users/deirdre/git/Msc_Project/code/app/uploads')
 	os.mkdir('/Users/deirdre/git/Msc_Project/code/app/uploads')
-	
+
 def detect_image():
 	PATH_TO_TEST_IMAGES_DIR = '/Users/deirdre/git/Msc_Project/code/app/uploads'
-	TEST_IMAGE_PATHS = [file for file in os.listdir(PATH_TO_TEST_IMAGES_DIR) if file.endswith('.jpg') or file.endswith('.jpeg')]
+
+	ACCEPTED_FILE_TYPES = ['.jpg', '.jpeg', '.png']
+	TEST_IMAGE_PATHS = [file for file in os.listdir(PATH_TO_TEST_IMAGES_DIR) if Path(file).suffixes[0] in ACCEPTED_FILE_TYPES]
 	DETECTED_IMAGES = '/Users/deirdre/git/Msc_Project/code/app/detected_images'
 
 	# Size, in inches, of the output images.
