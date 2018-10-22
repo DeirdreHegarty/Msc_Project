@@ -12,13 +12,13 @@
 - [x] start image labelling prototype
 
 ### Week 4
-- [ ] continue working on image labelling prototype
-- [ ] testing
-- [ ] identify question
-- [ ] identify audience
+- [x] continue working on image labelling prototype
 
 ### Week 5
-- [ ] finish image labelling prototype
+- [x] finish image labelling prototype
+- [ ] identify question
+- [ ] identify audience
+- [ ] research testing methods for Flask & Tensorflow
 - [ ] research audio DB
 
 ### Week 6
