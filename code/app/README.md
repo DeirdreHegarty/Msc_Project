@@ -1,5 +1,13 @@
 ## Image Labelleing Prototype [Weeks 1 - 5]
 
+### TO RUN: 
+
+```python
+FLASK_APP=main.py FLASK_DEBUG=1 flask run
+```
+
+### File Structure
+
 ```
 app
 ├── detected_images
@@ -10,14 +18,12 @@ app
 │
 ├── object_detection
 │   ├── __init__.py
-│   ├── core
+│   │
 │   ├── data
 │   │   ├── __init__.py
 │   │   └── mscoco_label_map.pbtxt
 │   │
 │   ├── object_detection_main.py
-│   │
-│   ├── protos
 │   │
 │   ├── ssd_mobilenet_v1_coco_2017_11_17.tar.gz
 │   │
@@ -59,7 +65,7 @@ When an image is uploaded to the application, Flask passes the image to the `/up
 
 An output image is generated and written to `/detected_images`; this image will have bounding boxes drawn around the detected objects, along with labels containing the detected class and percentage of AP (average precision). The list of classes present in each image is passed from the Tensorflow module to Flask, to be created in the DOM and displayed in the browser.  
 
-#### object_detection_main.py (TensorFlow)
+### object_detection_main.py (TensorFlow)
 * check if model is downloaded, and download if not present
 * load frozen TensorFlow 
 * load the label map [imported from `label_map_util.py`]
@@ -72,7 +78,7 @@ An output image is generated and written to `/detected_images`; this image will 
 
 *There is functionality present for live camera feed, however, I do not currently have a GPU (works with CPU but very slow and jumpy).*
 
-#### main.py (Flask)
+### main.py (Flask)
 * `@app.route('/results')`
   * uses `flask_dropzone` and `flask_uploads` to allow for drag and drop functionality for image uploads
   * set allowed upload types
