@@ -71,6 +71,7 @@ def results():
 	if "file_urls" not in session or session['file_urls'] == []:
 		return redirect(url_for('upload'))
 
+	vis_util.reset_class_strs()
 	object_detection_main.load_frozen_model()
 	object_detection_main.detect_image()
 	classes_strs = vis_util.get_class_strs()

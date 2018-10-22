@@ -543,6 +543,11 @@ def draw_mask_on_image_array(image, mask, color='red', alpha=0.4):
 def get_class_strs():
   return classes_strs
 
+def reset_class_strs():
+  # Slice in the list [] (0 elements) 
+  # at the location [:] (all indexes from start to finish)
+  classes_strs[:] = [] 
+
 def visualize_boxes_and_labels_on_image_array(
     image,
     boxes,
