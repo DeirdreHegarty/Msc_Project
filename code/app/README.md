@@ -80,4 +80,4 @@ An output image is generated and written to `/detected_images`; this image will 
 * `@app.route('/results')`
   * triggers tf model to load
   * triggers tf object detection on uploaded images
-  * accepts list of detected classes & displays list along with original image
+  * accepts list of detected classes & displays list along with output image
