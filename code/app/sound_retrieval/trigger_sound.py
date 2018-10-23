@@ -3,7 +3,7 @@ import json
 
 SOUND_DIR = '/Users/deirdre/git/Msc_Project/code/app/sound_retrieval/'
 
-def play_sound(input_file):
+def play_sound_with_pygame(input_file):
 	pygame.init()
 	pygame.mixer.init()
 	pygame.mixer.music.load(os.path.join(SOUND_DIR, input_file))
@@ -15,7 +15,7 @@ def search_sounds(search_string):
 	return_string_id = ''
 	sound_to_trigger = ''
 
-	with open('sound_list.json') as f:
+	with open(os.path.join(SOUND_DIR,'sound_list.json')) as f:
 	    data = json.loads(f.read())
 
 	for i in data:
@@ -36,6 +36,7 @@ def stopwatch(seconds):
     elapsed = 0
     while elapsed < seconds:
         elapsed = time.time() - start
-        
+
+
 # return_string_id, sound_to_trigger = search_sounds('kite')
-# play_sound(sound_to_trigger)
+# play_sound_with_pygame(sound_to_trigger)

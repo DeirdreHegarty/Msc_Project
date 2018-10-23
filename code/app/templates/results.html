@@ -13,4 +13,14 @@
 	    <li>{{ class_string }}</li>
 	{% endfor %}
 	</ul>
+	<audio id='audio'>
+	  <source src="/static/{{ sound_to_trigger }}" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	</audio>
+
+	<script type="text/javascript">
+		var x = document.getElementById("audio"); 
+		x.play(); 
+	</script>
+	
 {% endblock upload%}

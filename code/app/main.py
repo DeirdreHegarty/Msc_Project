@@ -3,14 +3,19 @@
 from flask import Flask, request, render_template, session, url_for, redirect, flash
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-import os, argparse, sys
+import os, argparse, sys, re
 from flask import send_from_directory
 from flask_cors import CORS
 
+# for object detection
 sys.path.append("/Users/deirdre/git/Msc_Project/code/app/object_detection")
 from object_detection import object_detection_main
 from utils import visualization_utils as vis_util
 from utils.visualization_utils import *
+
+# for sound
+from threading import Thread
+from sound_retrieval import trigger_sound
 
 app = Flask(__name__)
 app.debug = True
@@ -64,21 +69,29 @@ def upload():
 		
 	return render_template('upload.html', title='upload')
 
-
 @app.route('/results')
 def results():
 	# redirect to home if no images to display
 	if "file_urls" not in session or session['file_urls'] == []:
 		return redirect(url_for('upload'))
 
+	# object detection
 	vis_util.reset_class_strs()
 	object_detection_main.load_frozen_model()
 	object_detection_main.detect_image()
 	classes_strs = vis_util.get_class_strs()
-	
+
+	# extract object name from returned string
+	x = str(classes_strs[0]).partition("'")[2].partition(":")[0]
+	app.logger.debug(x)
+
+	# trigger sound
+	return_string_id, sound_to_trigger = trigger_sound.search_sounds(x)
+	app.logger.debug(return_string_id, sound_to_trigger)
+
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)
 
-	return render_template('results.html',file_urls=file_urls, classes_strs=classes_strs)
+	return render_template('results.html',file_urls=file_urls, classes_strs=classes_strs, sound_to_trigger=sound_to_trigger)
 
