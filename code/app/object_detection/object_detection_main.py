@@ -148,7 +148,7 @@ def delete_uploads():
 def detect_image():
 	PATH_TO_TEST_IMAGES_DIR = '/Users/deirdre/git/Msc_Project/code/app/uploads'
 
-	ACCEPTED_FILE_TYPES = ['.jpg', '.jpeg', '.png']
+	ACCEPTED_FILE_TYPES = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG']
 	TEST_IMAGE_PATHS = [file for file in os.listdir(PATH_TO_TEST_IMAGES_DIR) if Path(file).suffixes[0] in ACCEPTED_FILE_TYPES]
 	DETECTED_IMAGES = '/Users/deirdre/git/Msc_Project/code/app/detected_images'
 
