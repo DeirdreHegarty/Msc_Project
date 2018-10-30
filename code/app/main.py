@@ -14,7 +14,6 @@ from utils import visualization_utils as vis_util
 from utils.visualization_utils import *
 
 # for sound
-from threading import Thread
 from sound_retrieval import trigger_sound
 
 app = Flask(__name__)
@@ -87,7 +86,7 @@ def results():
 
 	# trigger sound
 	return_string_id, sound_to_trigger = trigger_sound.search_sounds(x)
-	app.logger.debug(return_string_id, sound_to_trigger)
+	print(return_string_id, sound_to_trigger)
 
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
