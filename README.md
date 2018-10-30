@@ -17,23 +17,29 @@
 ### Week 5
 - [x] finish image labelling prototype
 - [x] documentation for project to date
-- [ ] identify question
-- [ ] identify audience
-- [ ] research testing methods for Flask & Tensorflow
-- [ ] research audio DB
+- [x] identify more complex question
+- [x] identify audience
 
 ### Week 6
-- [ ] start label-audio retrieval prototype
+- [x] start label-audio retrieval prototype
+- [ ] fix audio trigger bug
+- [ ] triggering multiple sounds at once
+- [ ] research audio panning
+- [ ] research audio DB
 
 ### Week 7
+- [ ] triggering multiple sounds at different times
 - [ ] continue label-audio retrieval prototype
-- [ ] testing
+- [ ] research testing methods for Flask & Tensorflow
 
 ### Week 8
+- [ ] answer "complicated" audio-object question
+- [ ] retrieve position of object in image
 - [ ] work on combining above prototypes
 
 ### Week 9
 - [ ] work on combining above prototypes
+- [ ] solution for video frames
 - [ ] testing
 
 ### Week 10
