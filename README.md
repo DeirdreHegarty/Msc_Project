@@ -22,8 +22,8 @@
 
 ### Week 6
 - [x] start label-audio retrieval prototype
-- [ ] fix audio trigger bug
-- [ ] triggering multiple sounds at once
+- [ ] fix pyplot bug (saving image with bounding boxes)
+- [x] triggering multiple sounds at once
 - [ ] research audio panning
 - [ ] research audio DB
 
