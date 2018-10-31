@@ -11,6 +11,13 @@ def play_sound_with_pygame(input_file):
 	stopwatch(3)
 	pygame.mixer.stop()
 
+def retrieve_list_of_sounds(search_string_list):
+	obj_list = []
+	for x in search_string_list:
+		return_string_id, sound_to_trigger = search_sounds(x)
+		obj_list.append(sound_to_trigger)
+	return obj_list
+
 def search_sounds(search_string):
 	return_string_id = ''
 	sound_to_trigger = ''
