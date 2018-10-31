@@ -24,7 +24,7 @@
 - [x] start label-audio retrieval prototype
 - [ ] fix pyplot bug (saving image with bounding boxes)
 - [x] triggering multiple sounds at once
-- [ ] research audio panning
+- [x] research audio panning
 - [ ] research audio DB
 
 ### Week 7

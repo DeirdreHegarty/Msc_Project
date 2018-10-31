@@ -78,19 +78,21 @@ def results():
 	vis_util.reset_class_strs()
 	object_detection_main.load_frozen_model()
 	object_detection_main.detect_image()
-	classes_strs = vis_util.get_class_strs()
+	classes_strs = vis_util.get_class_strs() # text describing class ('dog : 90%')
 
-	# extract object name from returned string
-	x = str(classes_strs[0]).partition("'")[2].partition(":")[0]
-	app.logger.debug(x)
+	# extract object name from returned strings
+	# and append to list
+	# i.e. retrieving 'dog' from 'dog : 90%'
+	obj_names = []
+	for elm in classes_strs:
+		obj_names.append(str(elm).partition("'")[2].partition(":")[0])
 
-	# trigger sound
-	return_string_id, sound_to_trigger = trigger_sound.search_sounds(x)
-	print(return_string_id, sound_to_trigger)
+	sounds_to_trigger = trigger_sound.retrieve_list_of_sounds(obj_names)
+
 
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)
 
-	return render_template('results.html',file_urls=file_urls, classes_strs=classes_strs, sound_to_trigger=sound_to_trigger)
+	return render_template('results.html',file_urls=file_urls, classes_strs=classes_strs, sounds_to_trigger=sounds_to_trigger)
 
