@@ -28,7 +28,7 @@
 - [ ] research audio DB
 
 ### Week 7
-- [ ] triggering multiple sounds at different times
+- [x] triggering multiple sounds at different times
 - [ ] continue label-audio retrieval prototype
 - [ ] research testing methods for Flask & Tensorflow
 

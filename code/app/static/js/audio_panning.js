@@ -1,9 +1,9 @@
-$('document').ready(function(){
+function trigger_audio() {
 	// for legacy browsers
 	const AudioContext = window.AudioContext || window.webkitAudioContext;
 	const audioCtx = new AudioContext();
 
-	const pannerOptions = {pan: 1};
+	const pannerOptions = {pan: 0};
 	const panner = new StereoPannerNode(audioCtx, pannerOptions);
 
 	const pannerControl = document.querySelector('#panner');
@@ -11,19 +11,19 @@ $('document').ready(function(){
 	    panner.pan.value = this.value;
 	}, false);
 
-		$('.audio').each(function(){
+	bufferLoader = new BufferLoader(
+		audioCtx,
+		$.map($('audio source'), function(x) { return x.src; }),
+		function(bufferList) {
+			for(i=0; i<bufferList.length; i++){
 
-			// get the audio element
-			// 'this' is the audio element
-			const audioElement = this;
-
-			// pass it into the audio context
-			const track = audioCtx.createMediaElementSource(audioElement);
-
-			// track.connect(audioCtx.destination); 				//without panning
-			track.connect(panner).connect(audioCtx.destination);  	// with panning
-
-			audioElement.play();
-			
-		});
-});
+				var sound_effect = audioCtx.createBufferSource();
+				sound_effect.buffer = bufferList[i];
+				sound_effect.connect(panner).connect(audioCtx.destination);
+				sound_effect.start(i*2); // 2 second delay between sounds
+			}
+		}
+	);
+	
+    bufferLoader.load();
+}

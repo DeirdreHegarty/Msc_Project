@@ -10,7 +10,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<!-- if active page is 'results' -->
 	{% if active_page == "results"%}
-	<script type="text/javascript" src='static/js/audio_panning.js'></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/buffer-loader.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/audio_panning.js')}}"></script>
 	{% endif %}
 </head>
 <body>
