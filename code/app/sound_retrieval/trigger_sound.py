@@ -1,15 +1,7 @@
-import pygame, os, time
+import os, time
 import json
 
 SOUND_DIR = '/Users/deirdre/git/Msc_Project/code/app/sound_retrieval/'
-
-def play_sound_with_pygame(input_file):
-	pygame.init()
-	pygame.mixer.init()
-	pygame.mixer.music.load(os.path.join(SOUND_DIR, input_file))
-	pygame.mixer.music.play()
-	stopwatch(3)
-	pygame.mixer.stop()
 
 def retrieve_list_of_sounds(search_string_list):
 	obj_list = []

@@ -179,9 +179,10 @@ def detect_image():
 				use_normalized_coordinates=True,
 				line_thickness=8)
 
-		# currently have issue with saving output
-		# plt.figure(figsize=IMAGE_SIZE)
-		# plt.imsave(image_path, image_np)
+		plt.figure(figsize=IMAGE_SIZE)
+		plt.imsave(os.path.join(DETECTED_IMAGES,image_path), image_np)
+		plt.close() # causes issue if missing
+
 
 
 

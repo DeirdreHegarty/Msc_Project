@@ -22,7 +22,7 @@
 
 ### Week 6
 - [x] start label-audio retrieval prototype
-- [ ] fix pyplot bug (saving image with bounding boxes)
+- [x] fix pyplot bug (saving image with bounding boxes)
 - [x] triggering multiple sounds at once
 - [x] research audio panning
 - [ ] research audio DB
