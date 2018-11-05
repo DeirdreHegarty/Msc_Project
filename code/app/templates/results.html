@@ -16,7 +16,7 @@
 	</ul>
 	{% for aud in sounds_to_trigger %}
 	<audio class='audio'>
-	  <source src="/static/{{ aud }}" type="audio/mpeg">
+	  <source class="{{ aud['x_center'] }}" src="/static/{{ aud['sound'] }}" type="audio/mpeg">
 	  Your browser does not support the audio element.
 	</audio>
 	{% endfor %}

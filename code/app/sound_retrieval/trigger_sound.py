@@ -6,8 +6,9 @@ SOUND_DIR = '/Users/deirdre/git/Msc_Project/code/app/sound_retrieval/'
 def retrieve_list_of_sounds(search_string_list):
 	obj_list = []
 	for x in search_string_list:
-		return_string_id, sound_to_trigger = search_sounds(x)
-		obj_list.append(sound_to_trigger)
+		return_string_id, sound_to_trigger = search_sounds(x['sound'])
+		obj_list.append({'sound': sound_to_trigger, 'x_center': x['x_center']})
+
 	return obj_list
 
 def search_sounds(search_string):

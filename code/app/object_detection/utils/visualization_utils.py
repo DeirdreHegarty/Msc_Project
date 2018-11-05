@@ -37,6 +37,8 @@ import tensorflow as tf
 from object_detection.core import standard_fields as fields
 
 classes_strs = []
+classes_positions = []
+list_of_dicts = []
 
 _TITLE_LEFT_MARGIN = 10
 _TITLE_TOP_MARGIN = 10
@@ -543,10 +545,16 @@ def draw_mask_on_image_array(image, mask, color='red', alpha=0.4):
 def get_class_strs():
   return classes_strs
 
+def get_list_of_dicts():
+  return list_of_dicts
+
 def reset_class_strs():
   # Slice in the list [] (0 elements) 
   # at the location [:] (all indexes from start to finish)
   classes_strs[:] = [] 
+
+def reset_list_of_dicts():
+  list_of_dicts[:] = []
 
 def visualize_boxes_and_labels_on_image_array(
     image,
@@ -685,7 +693,8 @@ def visualize_boxes_and_labels_on_image_array(
           color=color,
           radius=line_thickness / 2,
           use_normalized_coordinates=use_normalized_coordinates)
-
+    global list_of_dicts
+    list_of_dicts.append({'class' : box_to_display_str_map[box], 'coords' : box })
   return image
 
 def add_cdf_image_summary(values, name):

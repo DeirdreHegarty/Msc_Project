@@ -76,19 +76,23 @@ def results():
 
 	# object detection
 	vis_util.reset_class_strs()
+	vis_util.reset_list_of_dicts()
 	object_detection_main.load_frozen_model()
 	object_detection_main.detect_image()
 	classes_strs = vis_util.get_class_strs() # text describing class ('dog : 90%')
+	list_of_dicts = vis_util.get_list_of_dicts() # retrieve coordinates - ymin, xmin, ymax, xmax
 
 	# extract object name from returned strings
 	# and append to list
 	# i.e. retrieving 'dog' from 'dog : 90%'
 	obj_names = []
-	for elm in classes_strs:
-		obj_names.append(str(elm).partition("'")[2].partition(":")[0])
-
+	temp = []
+	for elm in list_of_dicts:
+		xs = elm['coords'][1::2]
+		x_center_obj = ((((xs[0] + xs[1]) / 2) - 0.5) * 2)
+		obj_names.append({'sound': str(elm['class']).partition("'")[2].partition(":")[0],
+						'x_center' : x_center_obj})
 	sounds_to_trigger = trigger_sound.retrieve_list_of_sounds(obj_names)
-
 
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
