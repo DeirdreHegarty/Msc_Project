@@ -25,16 +25,17 @@
 - [x] fix pyplot bug (saving image with bounding boxes)
 - [x] triggering multiple sounds at once
 - [x] research audio panning
-- [ ] research audio DB
 
 ### Week 7
 - [x] triggering multiple sounds at different times
-- [ ] continue label-audio retrieval prototype
+- [x] continue label-audio retrieval prototype
 - [ ] research testing methods for Flask & Tensorflow
+- [ ] research audio DB
 
 ### Week 8
 - [ ] answer "complicated" audio-object question
-- [ ] retrieve position of object in image
+- [x] retrieve position of object in image (x-axis)
+- [ ] trigger audio in relation to object x coordinate
 - [ ] work on combining above prototypes
 
 ### Week 9
