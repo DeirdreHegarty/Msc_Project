@@ -29,18 +29,20 @@
 ### Week 7
 - [x] triggering multiple sounds at different times
 - [x] continue label-audio retrieval prototype
-- [ ] research testing methods for Flask & Tensorflow
-- [ ] research audio DB
+
 
 ### Week 8
-- [ ] answer "complicated" audio-object question
 - [x] retrieve position of object in image (x-axis)
-- [ ] trigger audio in relation to object x coordinate
-- [ ] work on combining above prototypes
+- [x] trigger audio in relation to object x coordinate
+- [x] trigger audio in relation to multiple objects
+- [x] work on combining above prototypes
+- [ ] research testing methods for Flask & Tensorflow
+- [ ] research audio DB
 
 ### Week 9
 - [ ] work on combining above prototypes
 - [ ] solution for video frames
+- [ ] answer "complicated" audio-object question
 - [ ] testing
 
 ### Week 10
