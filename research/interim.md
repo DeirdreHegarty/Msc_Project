@@ -15,44 +15,65 @@ link-citations:     true
 
 ## Goals of the Project
 
-The intention of this project is to explore the relationship between audio and image. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same.  
+The intention of this project is to explore the relationship between audio and image. Using a machine learning framework and audio references, photographs will be broken down into their object content labels. These labels will describe what is present in each photograph. Once images have been analysed, an audio sample that best describes each label will be retrieved from an audio reference list. The result is to create an auditory explanation of the scene through sounds instead of words (spoken or other).
 
-Using a machine learning framework and audio references, photographs will be broken down into their object content labels. These labels will describe what is present in each photograph. Once images have been analysed, an audio sample that best describes each label will be retrieved from an audio reference list. The result is to create an auditory explanation of the scene through sounds instead of words (spoken or other).
+![schematic digram](../images/project_schematic_diagram1.png)
+
+Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same.
 
 ## Overview and Progress to Date
 
-![drag and drop functionality](../images/demo1.png){width=320px}\ ![click and select functionality](../images/demo2.png){width=320px}
+The main languages used to develop this web application are Javascript and Python. The main application is delevoped using Python and Flask. Flask is a lightweight framework, written in Python, that allows users to develop web applications [@flask].   
 
-The Flask application uses `Flask-Dropzone` and `Flask-Uploads`. The selected files are validated against a list of predefined accepted file types. The dropzone will reject a file if it is not of an accepted format.
+The Flask application uses `Flask-Dropzone` [@flask_dz] and `Flask-Uploads` [@flask_up] for file uploading fucntionality. Selected files are validated against a list of predefined accepted file types. The dropzone will then reject a file if it is not of an accepted format. Flask also allows for client-sise sessions, which were useful differentiating and managing batches of image detected files. Figures 2 and 3 demonstrate the two different upload functionalities present in the application (drag and drop, or click and select).  
+
+![drag and drop functionality](../images/demo1.png){width=320px} 
+
+![click and select functionality](../images/demo2.png){width=320px}
+
+Figure 4 shows the validation step for file types.  
 
 ![validating file type](../images/demo3.png){width=400px height=250px}
-\
 
-When an image is uploaded to the application, Flask passes the image to the /uploads. Tensorflow can then retrieve the images from /uploads and perform object detection. The dataset used by the CNN model is COCO [@coco]
+When an image is uploaded to the application, Flask passes the image to the /uploads. Tensorflow can then retrieve the images from /uploads and perform object detection. TensorFlow is an open-source software library for numerical computation, and is well known for its use in the fields of machine learning and deep learning [@tensorflow]. The dataset used by the CNN model is COCO [@coco].
 
-An output image is generated and written to /detected_images; this image will have bounding boxes drawn around the detected objects, along with labels containing the detected class and percentage of AP (average precision). The list of classes present in each image is passed from the Tensorflow module to Flask, to be created in the DOM and displayed in the browser.
+![detected object classes and bounding boxes](../images/cat-dog.jpg){width=320px}
 
-![display image and class](../images/demo4.png){width=400px height=250px}
-\
+An output image is generated and written to /detected_images; this image (seen in Figure 5) will have bounding boxes drawn around the detected objects, along with labels containing the detected class and percentage of AP (average precision). The list of classes present in each image is passed from the Tensorflow module to Flask, to be rendered as a list in the browser along with the originally uploaded image. This can be seen in Figure 6.
 
-Once in the `results` route, audio files relating to the detected classes are retrieved. Each audio file is rendered inside the source of a html audio tag and is then triggered using a javascript API.
+![display image and class label](../images/demo4.png){width=400px height=250px}
 
-A more detailed explanation of current functionality can be found in appendix A.
+
+Once in the `results` route, audio files relating to the detected classes are retrieved. Each audio file is rendered inside the source of a html audio tag and is then triggered using a javascript API, Web Audio API [@web_audio]. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned according to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix A under the heading 'Sound Retrieval'.
+
 
 ## Problems Encountered
 
-The first issue that I encountered was caused by a missunderstanding of the meaning of object classification versus object detection. I had gone about researching and implementing small examples of using pytorch for object classification. I soon reasised that in order to achieve the results that I wanted, I would need to implement a model that would return bounding boxes, along with the detected class list.
+The first issue encountered was caused by a missunderstanding of the term object classification. After researching and implementing small examples which used pytorch for object classification, it was made apparent that object detection, as opposed to object classification, would be needed for this project. Image classification with localization outputs a class label and draws a bounding box around the detected object. Whereas, object detection allows for the same, but for multiple objects as opposed to one [@classvsdetect]. The return of multiple bounding boxes relating to the detected class objects is paramount to successfully placing sounds in a single soundscape.  
 
-I had planned on using Keras, a high-level neural networks API [@keras] which can run on top of Tensorflow. This would have proven problematic later in the project when retrieving audio that corresponds to detected classes. Because of my decision to use Tensorflow directly, I was able to add to the code for the CNN model and create extra functionality that was not already present. Keras is a more abstract solution, meaning that I would have needed to come up with some sort of work around to retrieve object coordinate data.
+Originally Keras, a high-level neural networks API [@keras] which can run on top of Tensorflow, was considered to be good tool for this project. Using Keras would have proven problematic later in the project when retrieving audio that corresponds to detected classes. Keras provides clients the use of simple APIs, in turn limiting the control that the user has during implemetation of certain functionalities. Because of the decision to use Tensorflow directly, it was possible to add to and alter the code for the CNN model, creating extra functionality that was not already present. 
 
-Originally I had thought that Python would provide a perfect solution for triggering multiple audio file via different channels. I implemented some example code that triggered audio using Pygame [@pygame]. I developed a solution for dynamically retrieving audio relating to specific object classes. However, there came an issue when I began to integrate the pygame module into the Flask application. Pygame and Flask compete to work on the main thread; throwing errors. After spending some time trying to resolve the issue, I decided that researching another approach would be a more valuable use of time. Instead of trying to process the audio functionality in the back-end, I decided to use a client-side solution, Web Audio API [@web_audio]. Written in JavaScript, Web Audio API allows for the same functionality as Pygame, without restricting me to a specific number of channels.
+Before research had taken place, it was assumed that Python would provide a perfect solution for triggering multiple audio file via different channels. A solution for dynamically retrieving audio relating to specific object classes was develped using Pygame [@pygame]. However, there came an issue when integrating the pygame module into the Flask application. Pygame and Flask compete to work on the main thread; throwing errors. After spending some time trying to resolve the issue, it was decided that researching another approach would be a more valuable use of time. Instead of trying to process the audio functionality in the back-end, a client-side solution using Web Audio API [@web_audio] was implemented. Written in JavaScript, Web Audio API allows for the same functionality as Pygame, without restricting clients to a specific number of channels.
 
 
-## Planned Steps to completion
+## Planned Steps to Completion
 
-Currently not much time has gone into the design and layout of the application. The end project will hopefully be more refined in appearance, and will be easy to navigate. The Bootstrap framework [@bootstrap] will provide a responsive and adaptive layout for use on a multiple of device types. The realised application will provide information about the project, as well as the actual project itself. 
+Currently not much time has gone into the design and layout of the application. The end project will hopefully be more refined in appearance, and will be easy to navigate. The Bootstrap framework [@bootstrap] will provide a responsive and adaptive layout for use on a multiple of device types. The realised application will provide information about the project, as well as the actual project itself.  
 
-I anticipate that while exporing the possibilities surrounding moving image, there will be more complex questions regarding audio timing and coordination. The project will retrieve class labels for a multiple of related images, and track the movement of each detected object through a series of frames.
+I anticipate that while exporing the possibilities surrounding moving image, there will be more complex questions regarding audio timing and coordination. The project will retrieve class labels for a multiple of related images, and track the movement of each detected object through a series of frames.  
+
+Tensorflow makes classes for unit testing accessible to users [@tftesting]. For the purposes of testing this application, writing unit tests and comapring output labels against expected outputs would prove to be a useful exercise.   
+
+Currently this project does not make use of an API for retrieving audio, or large audio database. Each audio file has been downloaded locally, and has been manually added to each object class in sound_retrieval/sound_list.json. Because of afore menioned reason, formal tests will not be written to check the audio retrieval element of the project.   
+
+Project documentation has, and will take place in the form of a Github repository. This repository marks all progress made throughout the year, and is a rough mapping of process and anaylsis in realtime. There also exists a document that explains the breakdown of the project with regards to code present (please see Appendix A); this document will continue to be updated as the project progresses. Once complete, a formal document outlining research, analysis and thesis will be created.
+
+
+\pagebreak
+
+![Projected timeline](../images/interim_timeline.png) 
+
+[@ex]
 
 \pagebreak
 
