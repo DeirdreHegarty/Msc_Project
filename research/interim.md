@@ -19,13 +19,17 @@ The intention of this project is to explore the relationship between audio and i
 
 ![schematic digram](../images/project_schematic_diagram1.png)
 
-Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same.
+Semantic image analysis allows for the cognitive structuring of extracted data from an image, into a semantically correct interpretation of a scene [@semanticimage]. This extracting of meaning from visual representation creates an illusion of human-like understanding. The result being a factual, but removed, description of a scene that does not immerse its listener in the narrative.  
+
+Listening to speech desribing a narrative can reveal to the listener, factual data about the scene. This project seeks to evoke a hearing of "another story behind the main narrative, the hidden story arising from the seat of the unconscious"[@soundandsilence]. A sense of otherness is created through the use of audio samples as opposed to a formal description of the scene through sentences, synthesised by a vocoder.  
+
+The visual and auditory systems overlap; each sensory system providing the missing piece for the other [@seeingsounds]. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same. Audio has a huge affect on the experience of an event because the "auditory system gives more precise temporal information and appears to dominate perception of when events occur" [@seeingsounds2]. It is over time that we learn how duration and auditory cognition encodes importance of event.
 
 ## Overview and Progress to Date
 
 The main languages used to develop this web application are Javascript and Python. The main application is delevoped using Python and Flask. Flask is a lightweight framework, written in Python, that allows users to develop web applications [@flask].   
 
-The Flask application uses `Flask-Dropzone` [@flask_dz] and `Flask-Uploads` [@flask_up] for file uploading fucntionality. Selected files are validated against a list of predefined accepted file types. The dropzone will then reject a file if it is not of an accepted format. Flask also allows for client-sise sessions, which were useful differentiating and managing batches of image detected files. Figures 2 and 3 demonstrate the two different upload functionalities present in the application (drag and drop, or click and select).  
+The Flask application uses `Flask-Dropzone` [@flask_dz] and `Flask-Uploads` [@flask_up] for file uploading fucntionality. Selected files are validated against a list of predefined accepted file types. The dropzone will then reject a file if it is not of an accepted format. Flask also allows for client-side sessions, which are useful for differentiating and managing batches of image detected files. Figures 2 and 3 demonstrate two different upload functionalities that are present in the application (drag and drop, or click and select).  
 
 ![drag and drop functionality](../images/demo1.png){width=320px} 
 
@@ -44,12 +48,12 @@ An output image is generated and written to /detected_images; this image (seen i
 ![display image and class label](../images/demo4.png){width=400px height=250px}
 
 
-Once in the `results` route, audio files relating to the detected classes are retrieved. Each audio file is rendered inside the source of a html audio tag and is then triggered using a javascript API, Web Audio API [@web_audio]. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned according to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix A under the heading 'Sound Retrieval'.
+Once in the results route, audio files relating to the detected classes are retrieved. Each audio file is rendered inside the source of a html audio tag and is then triggered using the javascript API, Web Audio API [@web_audio]. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned according to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix A under the heading 'Sound Retrieval'.
 
 
 ## Problems Encountered
 
-The first issue encountered was caused by a missunderstanding of the term object classification. After researching and implementing small examples which used pytorch for object classification, it was made apparent that object detection, as opposed to object classification, would be needed for this project. Image classification with localization outputs a class label and draws a bounding box around the detected object. Whereas, object detection allows for the same, but for multiple objects as opposed to one [@classvsdetect]. The return of multiple bounding boxes relating to the detected class objects is paramount to successfully placing sounds in a single soundscape.  
+The first issue encountered was caused by a missunderstanding of the term object classification. After researching and implementing small examples which used pytorch for object classification, it was made apparent that object detection, as opposed to object classification, would be needed for this project. Image classification with localization outputs a class label and draws a bounding box around the detected object. Whereas, object detection allows for the same, but for multiple objects as opposed to a single object [@classvsdetect]. The return of multiple bounding boxes relating to the detected class objects is paramount to successfully placing sounds in a single soundscape.  
 
 Originally Keras, a high-level neural networks API [@keras] which can run on top of Tensorflow, was considered to be good tool for this project. Using Keras would have proven problematic later in the project when retrieving audio that corresponds to detected classes. Keras provides clients the use of simple APIs, in turn limiting the control that the user has during implemetation of certain functionalities. Because of the decision to use Tensorflow directly, it was possible to add to and alter the code for the CNN model, creating extra functionality that was not already present. 
 
@@ -60,18 +64,16 @@ Before research had taken place, it was assumed that Python would provide a perf
 
 Currently not much time has gone into the design and layout of the application. The end project will hopefully be more refined in appearance, and will be easy to navigate. The Bootstrap framework [@bootstrap] will provide a responsive and adaptive layout for use on a multiple of device types. The realised application will provide information about the project, as well as the actual project itself.  
 
-I anticipate that while exporing the possibilities surrounding moving image, there will be more complex questions regarding audio timing and coordination. The project will retrieve class labels for a multiple of related images, and track the movement of each detected object through a series of frames.  
+It is anticipated that while exporing the possibilities surrounding moving image, there will be more complex questions regarding audio timing and coordination. The project will retrieve class labels for a multiple of related images, and track the movement of each detected object through a series of frames.  
 
 Tensorflow makes classes for unit testing accessible to users [@tftesting]. For the purposes of testing this application, writing unit tests and comapring output labels against expected outputs would prove to be a useful exercise.   
 
 Currently this project does not make use of an API for retrieving audio, or large audio database. Each audio file has been downloaded locally, and has been manually added to each object class in sound_retrieval/sound_list.json. Because of afore menioned reason, formal tests will not be written to check the audio retrieval element of the project.   
 
-Project documentation has, and will take place in the form of a Github repository. This repository marks all progress made throughout the year, and is a rough mapping of process and anaylsis in realtime. There also exists a document that explains the breakdown of the project with regards to code present (please see Appendix A); this document will continue to be updated as the project progresses. Once complete, a formal document outlining research, analysis and thesis will be created.
+Project documentation has, and will take place in the form of a Github repository. This repository marks all progress made throughout the year, and is a rough mapping of process and anaylsis in realtime. There also exists a document that explains the breakdown of the project with regards to code present (please see Appendix A); this document will continue to be updated as the project progresses. Once complete, a formal document outlining research, analysis and thesis will be created. Figure 7 is a rough visual representation of future steps to completion.
 
 
-\pagebreak
-
-![Projected timeline](../images/interim_timeline.png) 
+![projected timeline](../images/interim_timeline.png) 
 
 [@ex]
 
