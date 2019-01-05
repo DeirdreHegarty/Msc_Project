@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <head>
-	<title>Object Detection</title>
+	<title>Digital Foley Artist</title>
 	<!-- dropzone -->
     {{ dropzone.load() }}
-    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+    {{ dropzone.style('border: 7px dashed #FFA400; border-radius: 4px; margin: 10%; min-height: 400px;')  }}
+    <!-- favicon -->
+    <!-- thanks to - https://www.favicon-generator.org/ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-57x57.png')}}">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-60x60.png')}}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-72x72.png')}}">
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-76x76.png')}}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-114x114.png')}}">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-120x120.png')}}">
+	<link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-152x152.png')}}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/favicon.ico/apple-icon-180x180.png')}}">
+	<link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='images/favicon.ico/android-icon-192x192.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon.ico/favicon-32x32.png')}}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='images/favicon.ico/favicon-96x96.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon.ico/favicon-16x16.png')}}">
+	<link rel="manifest" href="{{ url_for('static', filename='images/manifest.json')}}">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/ms-icon-144x144.png')}}">
+	<meta name="theme-color" content="#ffffff">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -13,11 +31,83 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='js/buffer-loader.js')}}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='js/audio_panning.js')}}"></script>
 	{% endif %}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			font-family: "Tahoma", Geneva, sans-serif;
+		}
+		.navbar-brand img{
+			height: 80px;
+			margin-left: 5%;
+		}
+		#uploadr1{
+			padding-top:5%;
+		}
+		.dropzone{
+			font-weight: bold;
+			padding: 20%;
+			color: grey;
+		}
+		#col-info{
+			line-height: 1.5em;
+		}
+		#col-info h3{
+			padding-bottom: 5%;
+			font-weight: bold;
+			color: grey;
+		}
+		#uploadr2{
+			width:100%;
+			padding: 5% 0%;
+		}
+		#uploadr2 div{
+			min-height: 400px;
+			margin: 2%;
+			background:blue;
+			border-radius:6px;
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			font-size: 1.5em;
+		}
+		#uploadr2 div img{
+			height:100px;
+			margin-top: 30%;
+			margin-bottom: 30%;
+		}
+		#uploadr2 div a{
+			color:white;
+			text-decoration: none;
+		}
+		#uploadr2 div:nth-child(1){
+			background-color: rgb(242,95,92,.9);
+			margin-left: 8.5%;
+		}
+		@media only screen and (max-width: 768px) {
+		    #uploadr2 div:nth-child(1) {
+		        margin-left: 2%;
+		    }
+		    #uploadr2 div img{
+				margin-bottom: 10%;
+		    }
+		}
+		#uploadr2 div:nth-child(2){
+			background-color: rgb(255,224,102,.9);
+		}
+		#uploadr2 div:nth-child(3){
+			background-color: rgb(36,123,160,.9);
+		}
+	</style>
 </head>
 <body>
+	{% block navbar %}
+	<nav class="navbar navbar-light bg-light">
+	  <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='images/mulogo.png')}}"></a>
+	</nav>
+	{% endblock %}
 	<div class="container">
-
 		{% block upload %}{% endblock %}
+		<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 	</div>
 </body>
 </html>

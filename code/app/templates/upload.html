@@ -1,7 +1,31 @@
 {% extends 'skeleton.html' %}
 
 {% block upload %}
-	<h1>UPLOAD</h1>
-	{{ dropzone.create(action_view='upload') }}
+	<div id='uploadr1' class='row'>
+		<div id='col-info' class='col-md-6'>
+			<h3>Digital Foley Artist: Investigation of methods for adding soundscapes to imagery</h3>
+			<p>The intention of this project is to explore the relationship between audio and image. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same.</p>
+			<p>Using a machine learning framework and visual database, photographs will be broken down into their object content labels. These labels will describe what is present in each photograph. Once images have been analysed, an audio sample that best describes each label will be retrieved from a sound library. The result is to create an auditory explanation of the scene through sounds instead of words (spoken or other).</p>
+		</div>
 
+		<div id='col-dropzone' class='col-md-6'>{{ dropzone.create(action_view='upload') }}</div>
+	</div>
+	<div id='uploadr2' class='row'>
+		<div class='col-md-3'>
+			<img src="{{ url_for('static', filename='images/notebook.svg')}}">
+			<p>thesis</p>
+		</div>
+		<div class='col-md-3'>
+			<a href="https://github.com/DeirdreHegarty/Msc_Project/tree/master/code/app" target='_blank'>
+				<img src="{{ url_for('static', filename='images/github.svg')}}">
+				<p>source code</p>
+			</a>
+		</div>
+		<div class='col-md-3'>
+			<a href="https://www.maynoothuniversity.ie/computer-science" target='_blank'>
+				<img src="{{ url_for('static', filename='images/college-graduation.svg')}}">
+				<p>M.U. computer sceince dept.</p>
+			</a>
+		</div>
+	</div>
 {% endblock upload%}
