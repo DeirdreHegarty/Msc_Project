@@ -92,7 +92,7 @@ def results():
 	session['detected_urls'] = object_detection_main.detect_image()
 	classes_strs = vis_util.get_class_strs() # text describing class ('dog : 90%')
 	list_of_dicts = vis_util.get_list_of_dicts() # retrieve coordinates - ymin, xmin, ymax, xmax
-	print(classes_strs)
+	print(list_of_dicts)
 	# extract object name from returned strings
 	# and append to list
 	# i.e. retrieving 'dog' from 'dog : 90%'
@@ -103,7 +103,7 @@ def results():
 		xs = elm['coords'][1::2]
 		x_center_obj = ((((xs[0] + xs[1]) / 2) - 0.5) * 2)
 		obj_names.append({'sound': str(elm['class']).partition("'")[2].partition(":")[0],
-						'x_center' : x_center_obj})
+						'x_center' : round(x_center_obj,1)})
 		objs.append(str(elm['class']).partition("'")[2].partition(":")[0])
 	sounds_to_trigger = trigger_sound.retrieve_list_of_sounds(obj_names)
 
