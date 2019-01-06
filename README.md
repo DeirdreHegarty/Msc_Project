@@ -54,7 +54,7 @@
 - [x] write up
 
 ### Week A
-- [ ] bug fix - audio not triggering when non-audio object present
+- [x] bug fix - audio not triggering when non-audio object present
 - [ ] research testing methods for Flask & Tensorflow
 - [ ] research audio DB
 - [ ] testing
