@@ -36,26 +36,28 @@
 - [x] trigger audio in relation to object x coordinate
 - [x] trigger audio in relation to multiple objects
 - [x] work on combining above prototypes
-- [ ] research testing methods for Flask & Tensorflow
-- [ ] research audio DB
 
 ### Week 9
-- [ ] work on combining above prototypes
-- [ ] solution for video frames
-- [ ] answer "complicated" audio-object question
-- [ ] testing
+- [x] work on combining above prototypes
+- [x] answer "complicated" audio-object question
 
 ### Week 10
-- [ ] GUI
+- [x] GUI
 
 ### Week 11
-- [ ] tie up loose ends
-- [ ] write up
-- [ ] testing
-- [ ] re-examine audience
-- [ ] re-examine question
+- [x] tie up loose ends
+- [x] write up
+- [x] re-examine audience
+- [x] re-examine question
 
 ### Week 12
+- [x] write up
+
+### Week A
+- [ ] bug fix - audio not triggering when non-audio object present
+- [ ] research testing methods for Flask & Tensorflow
+- [ ] research audio DB
 - [ ] testing
-- [ ] write up
+- [ ] bug fixes after testing
+
 
