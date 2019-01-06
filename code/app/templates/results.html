@@ -2,7 +2,7 @@
 {% set active_page = "results" %}
 
 {% block upload %}
-	<a href="{{ url_for('upload') }}"><img style='height:50px;margin-top:2%;margin-left:-2%;' src="{{ url_for('static', filename='images/left-arrow.svg')}}"></a>
+	<a href="{{ url_for('upload') }}"><img style='height:50px;margin-top:2%;margin-left:-5%;' src="{{ url_for('static', filename='images/left-arrow.svg')}}"></a>
 	<div  id='resultrow' class='row'>
 		<div id='resulttext' class='col-md-6'>
 			<h3>The following objects were detected:</h3>
@@ -12,7 +12,7 @@
 					<img src="{{ url_for('static', filename='images/list2.svg')}}">
 				</div>
 				<div class='col-md-10'>
-					<ul>
+					<ul id='reslist'>
 					{% for name_string in objs %}
 					    <li>{{ name_string }}</li>
 					{% endfor %}
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='col-md-6'>
+		<div id='resultim' class='col-md-6'>
 			<div id='resultimgrow' class='row' style='text-align:center;'>
 				<div class='col-md-12'>
 					{% for file_url in file_urls %}
