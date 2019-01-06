@@ -51,6 +51,7 @@ def upload():
 	# clear any unsubmitted images from previous attempts
 	session.pop('file_urls', None)
 
+	print(session)
 	# image upload from Dropzone
 	if request.method == 'POST':
 		file_obj = request.files
@@ -74,29 +75,49 @@ def results():
 	if "file_urls" not in session or session['file_urls'] == []:
 		return redirect(url_for('upload'))
 
+	# set session for image results
+	if "detected_urls" not in session:
+		session['detected_urls'] = []
+	
+	# uploaded image urls
+	detected_urls = session['detected_urls']
+
+	# clear any unsubmitted images from previous attempts
+	session.pop('detected_urls', None)
+
 	# object detection
 	vis_util.reset_class_strs()
 	vis_util.reset_list_of_dicts()
 	object_detection_main.load_frozen_model()
-	object_detection_main.detect_image()
+	session['detected_urls'] = object_detection_main.detect_image()
 	classes_strs = vis_util.get_class_strs() # text describing class ('dog : 90%')
 	list_of_dicts = vis_util.get_list_of_dicts() # retrieve coordinates - ymin, xmin, ymax, xmax
-
+	print(classes_strs)
 	# extract object name from returned strings
 	# and append to list
 	# i.e. retrieving 'dog' from 'dog : 90%'
 	obj_names = []
 	temp = []
+	objs = []
 	for elm in list_of_dicts:
 		xs = elm['coords'][1::2]
 		x_center_obj = ((((xs[0] + xs[1]) / 2) - 0.5) * 2)
 		obj_names.append({'sound': str(elm['class']).partition("'")[2].partition(":")[0],
 						'x_center' : x_center_obj})
+		objs.append(str(elm['class']).partition("'")[2].partition(":")[0])
 	sounds_to_trigger = trigger_sound.retrieve_list_of_sounds(obj_names)
 
+	print(session)
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)
+	detected_urls = session['detected_urls']
+	session.pop('detected_urls', None)
 
-	return render_template('results.html',file_urls=file_urls, classes_strs=classes_strs, sounds_to_trigger=sounds_to_trigger)
+	return render_template('results.html',
+							file_urls=file_urls, 
+							classes_strs=classes_strs, 
+							sounds_to_trigger=sounds_to_trigger, 
+							objs=objs, 
+							detected_urls=detected_urls)
 

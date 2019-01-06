@@ -2,27 +2,44 @@
 {% set active_page = "results" %}
 
 {% block upload %}
-	<h1>RESULTS</h1>
-	<a href="{{ url_for('upload') }}">Back</a><p>
-	<ul>
-	{% for file_url in file_urls %}
-	    <li><img style="height: 150px" src="{{ file_url }}"></li>
-	{% endfor %}
-	</ul>
-	<ul>
-	{% for class_string in classes_strs %}
-	    <li>{{ class_string }}</li>
-	{% endfor %}
-	</ul>
+	<a href="{{ url_for('upload') }}"><img style='height:50px;margin-top:2%;margin-left:-2%;' src="{{ url_for('static', filename='images/left-arrow.svg')}}"></a>
+	<div  id='resultrow' class='row'>
+		<div id='resulttext' class='col-md-6'>
+			<h3>The following objects were detected:</h3>
+			<hr/>
+			<div class='row'>
+				<div class='col-md-2'>
+					<img src="{{ url_for('static', filename='images/list2.svg')}}">
+				</div>
+				<div class='col-md-10'>
+					<ul>
+					{% for name_string in objs %}
+					    <li>{{ name_string }}</li>
+					{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class='col-md-6'>
+			<div id='resultimgrow' class='row' style='text-align:center;'>
+				<div class='col-md-12'>
+					{% for file_url in file_urls %}
+					    <img src="{{ file_url }}">
+					{% endfor %}
+				</div>
+				<div class='col-md-12'>
+					<img src="/static/images/detected_images/{{ detected_urls }}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- audio files -->
 	{% for aud in sounds_to_trigger %}
 	<audio class='audio'>
 	  <source class="{{ aud['x_center'] }}" src="/static/{{ aud['sound'] }}" type="audio/mpeg">
 	  Your browser does not support the audio element.
 	</audio>
 	{% endfor %}
-
-	<!-- pan audio left and right -->
-	<input type="range" id="panner" class="control-panner" list="pan-vals" min="-1" max="1" value="0" step="0.01" data-action="panner" />
 
 <script type="text/javascript">
 trigger_audio();

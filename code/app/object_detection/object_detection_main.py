@@ -124,7 +124,7 @@ def run_inference_for_single_image(image, graph):
 
 			# Run inference
 			output_dict = sess.run(tensor_dict,
-														 feed_dict={image_tensor: np.expand_dims(image, 0)})
+									feed_dict={image_tensor: np.expand_dims(image, 0)})
 
 			# all outputs are float32 numpy arrays, so convert types as appropriate
 			output_dict['num_detections'] = int(output_dict['num_detections'][0])
@@ -150,7 +150,7 @@ def detect_image():
 
 	ACCEPTED_FILE_TYPES = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG']
 	TEST_IMAGE_PATHS = [file for file in os.listdir(PATH_TO_TEST_IMAGES_DIR) if Path(file).suffixes[0] in ACCEPTED_FILE_TYPES]
-	DETECTED_IMAGES = '/Users/deirdre/git/Msc_Project/code/app/detected_images'
+	DETECTED_IMAGES = '/Users/deirdre/git/Msc_Project/code/app/static/images/detected_images'
 
 	# Size, in inches, of the output images.
 	IMAGE_SIZE = (12, 8)
@@ -182,6 +182,7 @@ def detect_image():
 		plt.figure(figsize=IMAGE_SIZE)
 		plt.imsave(os.path.join(DETECTED_IMAGES,image_path), image_np)
 		plt.close() # causes issue if missing
+		return image_path
 
 
 
