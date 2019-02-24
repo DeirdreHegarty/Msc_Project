@@ -1,9 +1,6 @@
 ## Digital Foley Sound Artist
 
-![Homepage of application](docs/images/upload.png)
-
-![Result of application](docs/images/results.png)
-
+![Result of application](docs/images/result2.png)
 
 ### TO RUN: 
 
