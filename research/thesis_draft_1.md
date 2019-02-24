@@ -1,0 +1,16 @@
+# Thesis draft 1 
+
+## Motivation
+
+Much research has been invested in the dissection of images into text and speech <PERHAPS I NEED SOME EXAMPLE HERE OF RESEARCH IN THIS AREA _ OR WOULD THAT BELONG IN PROBLEM STATEMENT?>; both channels embedded in human interpretation and understanding. Text-based descriptions are heavily restricted by language. Meaning can become lost between the translation of one language description to another. Each layer of abstraction introduces an opportunity for miscommunication or ill interpretation of the visual. Budd speaks about the lexical ambiguity of language-based descriptions, explaining how "a “mole” may be a burrowing animal or an information gatherer in an organization"[@budd]. This ambiguity not only means that a description may be interpreted in different ways in a given language, but also means that once translated into another language, the chosen interpretation may have been inaccurate. This new inaccurate description may then be subjected to its own language specific misinterpretations. Thus creating a tree of correct and incorrect possible descriptions of an event.
+
+"A picture is worth a thousand words", an English idiom, encapsulates the idea that there are limits associated with language-based descriptions of a scene. Ultimately, there can only ever be a finite amount of words that will accurately describe the seen. This idiom is said to be derived from an advertisement in Syracuse Post Standard newspaper - "Use a picture. It's worth a thousand words."[@englishidiom].
+
+Listening to speech desribing a narrative can reveal to the listener, factual data about the scene. Because the predominant exploration of image has been into its conversion into a language-based media, user experience and immersion have been set to the background. 
+
+The visual and auditory systems overlap; each sensory system providing the missing piece for the other [@seeingsounds]. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same. Audio has a huge affect on the experience of an event because the "auditory system gives more precise temporal information and appears to dominate perception of when events occur" [@seeingsounds2]. It is over time that we learn how duration and auditory cognition encodes importance of event.
+
+An auditory response that is produced naturally by an object can be a pure description of event. It evokes a more primitive response that reduces the misinterpretation of its visual counterpart. It is free of language and is an uninhibited description of a real-time interaction. Auditory response is less likely to become tarnished by misinterpretation, because it is not dependant on language or speech. What is meant by this is, more can be attributed to hearing the sound an object produces as opposed to being presented with a sentence that describes the same. This project seeks to evoke a hearing of "another story behind the main narrative, the hidden story arising from the seat of the unconscious"[@soundandsilence]. A sense of otherness is created through the use of audio samples as opposed to a formal description of the scene through sentences, synthesised by a vocoder. 
+
+
+
