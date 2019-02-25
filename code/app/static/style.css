@@ -1,0 +1,115 @@
+body{
+	font-family: "Tahoma", Geneva, sans-serif;
+}
+.navbar-brand img{
+	height: 80px;
+}
+.navbar-brand{
+	margin-left: 5%;
+}
+#uploadr1{
+	padding-top:5%;
+}
+.dropzone{
+	font-weight: bold;
+	padding: 20%;
+	color: grey;
+}
+#col-info{
+	line-height: 1.5em;
+}
+#col-info h3, #resultrow h3{
+	padding-bottom: 5%;
+	font-weight: bold;
+	color: grey;
+}
+#uploadr2{
+	width:100%;
+	padding: 5% 0%;
+}
+#uploadr2 div{
+	min-height: 400px;
+	margin: 2%;
+	background:blue;
+	border-radius:6px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+#uploadr2 div img{
+	height:100px;
+	margin-top: 30%;
+	margin-bottom: 30%;
+}
+#uploadr2 div a{
+	color:white;
+	text-decoration: none;
+}
+#uploadr2 div:nth-child(1){
+	background-color: rgb(242,95,92,.9);
+	margin-left: 8.5%;
+}
+@media only screen and (max-width: 768px) {
+	#uploadr2 div:nth-child(1) {
+		margin-left: 2%;
+	}
+	#uploadr2 div img{
+		margin-bottom: 10%;
+	}
+}
+#uploadr2 div:nth-child(2){
+	background-color: rgb(255,224,102,.9);
+}
+#uploadr2 div:nth-child(3){
+	background-color: rgb(36,123,160,.9);
+}
+#resultrow{
+	padding-top: 2%;
+	padding-bottom: 10%;
+	list-style-type: circle;
+}
+#resultimgrow{
+	text-align:center;
+}
+#resultimgrow img{
+	height: 200px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#reslist{
+	margin-top: 5%;
+	line-height: 1.5em;
+	font-size: 1.5em;
+	color : #363742;
+	list-style: none;
+}
+#reslist li:before {
+  content: '✓ ';
+}
+#resulttext{
+	border-style: solid solid none solid;
+	padding:5%;
+	border-radius:4px 4px 0px 0px;
+	border-color: #DCDCDC;
+}
+#resultim{
+	border-style: none solid solid none;
+	padding:5%;
+	border-radius:4px 0px 0px 0px;
+	border-color: #DCDCDC;
+}
+ul li:before{
+	content: none;
+}
+#navbarSupportedContent{
+	margin-right:5%;
+}
+#resultdet{
+	text-align:center;
+	margin-top:2%; 
+	margin-bottom:5%;
+	background-color: rgb(36,123,160,.9); 
+	border-radius:6px;
+	padding:2%;
+}
