@@ -32,7 +32,7 @@ The NCSE Press Release outlines that 1 in every 65 children in Ireland are diagn
 
 Although there exists multiple tools for the conversion if image into another format, none implement image to sound in the same way as is intended by this project.  
 
-VizWiz[@vizwiz] and TapTapSee[@taptap] are examples of two mobile applications designed to assist the visually impaired. VizWiz implements "quikTurkit", a project specific feature built using the TurKit API[@turkit] for recruiting human workers to executing tasks on Mechanical Turk[@mechanicalturk]. The application makes use of image, voice recording and speech to text, to allow users to receive information about a specific object or scene. Its academic paper highights issues regarding speech to text conversion, stating that it has a 15.8% success rate in accurately converting voice recorded questions into text for later answering. Although image classification and analysis relies on this conversion, the human classifier can listen to the voice recorded question captured by the user. Therein lies a possible issue or restriction caused by language based analysis. 
+VizWiz[@vizwiz] and TapTapSee[@taptap] are examples of two mobile applications designed to assist the visually impaired. VizWiz implements "quikTurkit", a project specific feature built using the TurKit API[@turkit] for recruiting human workers to executing tasks on Mechanical Turk[@mechanicalturk]. The application makes use of image, voice recording and speech to text, to allow users to receive information about a specific object or scene. Its academic paper highlights issues regarding speech to text conversion, stating that it has a 15.8% success rate in accurately converting voice recorded questions into text for later answering. Although image classification and analysis relies on this conversion, the human classifier can listen to the voice recorded question captured by the user. Therein lies a possible issue or restriction caused by language based analysis. 
 
 Both VizWiz and TapTapSee use VoiceOver[@voiceover], a gesture-based screen reader on iOS. However, TapTapSee does all image classifications automatically as opposed to outsourcing to Mechical Turk's human workers. Because of the nature of the application, it cannot answer the same multitude of questions as VizWiz; it can simply classify objects in a given image and speak the answer to the user along with displaying the text. Although the application allows for multiple languages, it does not supply the user with information such as position, thus removing the user from the immediate experience of object interaction.
 
@@ -43,3 +43,31 @@ Perhaps the closest relating research to the work outlined in this paper, is out
 Krishnan, Porkodi and Kanimozhi take a purely visual approach to audio conversion. Their work allows for the production of audio directly from an image. Sustain and frequency is determined by the ouput of canny edge detection on an image; low frequencies captured in horizontal edges, and higher frequencies in the vertical edges[@cannyaudio].
 
 
+## Technical material
+
+
+---
+
+# The Solution
+
+## Website - User upload image
+
+The main languages used to develop this web application are Javascript and Python, with Flask providing much of the routing and data handling functionalities. Flask is a lightweight framework, written in Python, that allows for the development of web applications [@flask].   
+
+The web interface uses `Flask-Dropzone` [@flask_dz] and `Flask-Uploads` [@flask_up] for file uploading fucntionality. Selected files are validated against a list of predefined accepted file types. The dropzone will reject a file if it is not of an accepted format. Client-side sessions are used for differentiating and managing both original and image detected files. 
+
+Once a user has sucessfully uploaded a file, Flask passes the file to Tensorflow for object detection. After detection has occurred, Flask receives the processed image along with metadata including detected objects' locations in the input image, name and a reference to the detected objects' associated sounds. Flask then renders the retrieved data into HTML. The associated sounds are rendered inside the source of html audio tags, and are later triggered using WebAudio API, an API for audio manipulation written in Javascript[@web_audio].
+
+
+Once in the results route, audio files relating to the detected classes are retrieved. Each audio file is rendered inside the source of a html audio tag and is then triggered using the javascript API, Web Audio API [@web_audio]. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned according to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix A under the heading 'Sound Retrieval'.
+
+
+## image detection of image
+
+Tensorflow can then retrieve the images from /uploads and perform object detection. TensorFlow is an open-source software library for numerical computation, and is well known for its use in the fields of machine learning and deep learning [@tensorflow]. The dataset used by the CNN model is COCO [@coco].
+
+An output image is generated and written to /detected_images; this image (seen in Figure 5) will have bounding boxes drawn around the detected objects, along with labels containing the detected class and percentage of AP (average precision). The list of classes present in each image is passed from the Tensorflow module to Flask, to be rendered as a list in the browser along with the originally uploaded image
+
+## lable retrieval
+
+## sound retrieval, rendering and triggering
