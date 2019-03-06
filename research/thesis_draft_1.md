@@ -19,8 +19,6 @@ An auditory response that is produced naturally by an object can be a pure descr
 
 ## Problem Statement
 
-The visual and auditory systems overlap; each sensory system providing the missing piece for the other [@seeingsounds]. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same. Audio has a huge affect on the experience of an event because the "auditory system gives more precise temporal information and appears to dominate perception of when events occur" [@seeingsounds2]. It is over time that we learn how duration and auditory cognition encodes importance of event.
-
 According to 2016 Census, the percentage of people with visual impairment increased by 6% between 2011 - 2016. This means that in 2016, 54,810 people living in Ireland were acknowledged as being visually impaired[@censusprofile9]. The work of Jiang, Lin and Qu addresses real-time image to speech processing. Their work outlines the implementation of a system where "both visual object and audio sound can be spatially localized"[@letblindsee]. Although this project implements spatial sound techniques for placement of audio in space, the use of description through language removes the participant from the immediate experience of the scene.
 
 The NCSE Press Release outlines that 1 in every 65 children in Ireland are diagnosed as being on the Autistic spectrum[@ncsepress]; this equates to 1.5% of students attending school in 2016. This demographic could be considered to be an audience that would benefit greatly from a tool that provides interactive visual and aural support for learning about objects in context. Creating an alternative to textbook based learning allows for a more bespoke learning experience. In their paper, Tanner, Dixon and Verenikina state that "visual learning dimension incorporated in digital technologies is supportive of the visual modality of students with ASD"[@autismdigi].
@@ -61,7 +59,7 @@ Once a user has sucessfully uploaded a file, Flask passes the file to Tensorflow
 
 ## object detection of image
 
-Object detection happens in the Tensorflow backend of the application. TensorFlow is an open-source library for numerical computation, and is well known for its use in the fields of machine learning and deep learning [@tensorflow]. The dataset used by the CNN model is COCO [@coco].
+Object detection is handled by TensorFlow. TensorFlow is an open-source library for numerical computation, and is well known for its use in the fields of machine learning and deep learning [@tensorflow]. The dataset used by the CNN model is COCO [@coco].
 
 <<how COCO object detects here>>
 
