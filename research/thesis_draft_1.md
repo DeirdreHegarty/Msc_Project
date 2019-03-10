@@ -102,6 +102,7 @@ Before research had taken place, it was assumed that Python would provide a perf
 
 Javascript is used to map each HTML audio tag to a function that extracts the pan value from the tag's class attribute. The pan value and audio file is loaded into a buffer. Each audio file in the buffer is triggered at 2 second intervals. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned relative to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix A under the heading 'Sound Retrieval'.
 
+Currently this project does not make use of an API for retrieving audio. FreeSound offers an API for the retrieval of specific and associated sounds[@freesound]. The idea of incorporating an API would make for dynamic sound retrieval for attaching multiple sound profiles to a specific object; however, the poor quality of a large percentage of sounds available via FreeSound API did not validate a decision to include it in the project. An alternate decision was made to store audio files in a local directory. The files are sourced from two royalty free sound effect libraries, Zapsplat[@zapsplat] and AudioHero[@audiohero]. 
 
 ## Documentation and Version Control
 
