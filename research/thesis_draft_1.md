@@ -57,9 +57,6 @@ Perhaps the closest relating research to the work outlined in this paper, is out
 
 Krishnan, Porkodi and Kanimozhi take a purely visual approach to audio conversion. Their work allows for the production of audio directly from an image. Sustain and frequency is determined by the ouput of canny edge detection on an image; low frequencies captured in horizontal edges, and higher frequencies in the vertical edges[@cannyaudio].
 
-
-## Technical material
-
 ---
 
 # The Solution
@@ -106,4 +103,11 @@ Before research had taken place, it was assumed that Python would provide a perf
 Javascript is used to map each HTML audio tag to a function that extracts the pan value from the tag's class attribute. The pan value and audio file is loaded into a buffer. Each audio file in the buffer is triggered at 2 second intervals. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned relative to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix A under the heading 'Sound Retrieval'.
 
 
+## Documentation and Version Control
+
+Throughout the duration of the project Git[@git] has been used to track code progression and documentation. Git, along with Github[@github] allows for local and remote versions of the project to exist. While working on a specific feature Git is used to locally store and document code changes. Once a more realised version of the feature is completed, the changes are then pushed to the remote repositiory on Github. The repository that contains the project code is public and facilitates subscribers to track any changes to the code base, refinement of features, bug fixes and extra documentation; it marks all progress made throughout the year, and is a mapping of process and anaylsis in realtime.
+
+The chosen documentation format for project is markdown, a plain text markup language that can be converted into a multiple of different formats. Github supports markdown and so no conversion is necesary to view documents via a browser. The simplicity of markdown has made it easy to write and commit documents to Github for version control; it also allows for the conversion of documents into another file format using Pandoc[@pandoc]. Written in Haskell, Pandoc is an open-source document converter that is well maintained.
+
+The project was executed on three stages. The first stage being the object detection prototype, the second was the audio retrieval, then the final stage combined the object detection and audio retrieving prototypes. After the protypes were successfully combined into Flask the final audio triggering was completed. The first stage has been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/code/app/docs/image_labelling_w1_to_w5.md) and in Appendix A. The remainig stages have been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/research/Project_Breakdown.md) and in Appendix B.
 
