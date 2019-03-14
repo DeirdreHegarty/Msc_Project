@@ -63,7 +63,7 @@ Krishnan, Porkodi and Kanimozhi take a purely visual approach to audio conversio
 
 ## Website
 
-The decision of creating a web-based application stemmed from the intention of providing a readily accessible tool to a large audience. It was thought that there would be a restriction of audience if the application were to be a native application for mobile devices or desktop machines. The main advantage to making the application web-based, is the fact that it can reach a large audience on a wide variety of devices and operating systems. However, currently Apple iOS or Safari is not supported.
+The decision of creating a web-based application stemmed from the intention of providing a readily accessible tool to a large audience. It was thought that there would be a restriction of audience if the application were to be a native application for mobile devices or desktop machines. The main advantage to making the application web-based, is the fact that it can reach a large audience on a wide variety of devices and operating systems. However, currently Apple iOS or Safari is not supported. The Bootstrap framework provides a responsive and adaptive layout for use on a multiple of device types [@bootstrap]. To facilitate many different viewport sizes Bootstrap offers predefined HTML and CSS-based templates and components. 
 
 The main languages used to develop this web application are JavaScript and Python, with Flask providing much of the routing and data handling functionalities. Flask is a lightweight framework, written in Python, that allows for the development of web applications [@flask].   
 
@@ -117,5 +117,53 @@ Throughout the duration of the project Git[@git] has been used to track code pro
 The chosen documentation format for project is markdown, a plain text markup language that can be converted into a multiple of different formats. Github supports markdown and so no conversion is necessary to view documents via a browser. The simplicity of markdown has made it easy to write and commit documents to Github for version control; it also allows for the conversion of documents into another file format using Pandoc[@pandoc]. Written in Haskell, Pandoc is an open-source document converter that is well maintained.
 
 The project was executed on three stages. The first stage being the object detection prototype, the second was the audio retrieval, then the final stage combined the object detection and audio retrieving prototypes. After the prototypes were successfully combined into Flask the final audio triggering was completed. The first stage has been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/code/app/docs/image_labelling_w1_to_w5.md) and in Appendix A. The remaining stages have been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/research/Project_Breakdown.md) and in Appendix B.
+
+---
+
+# Verification and Evaluation
+
+## Software Verification
+
+Selenium facilitates the automation of web browsers for User Interface (UI) testing [@selenium]. Selenium itself does not offer a testing frame work. It does however offers Python bindings to access Python's unittest module[@pyselenium]. On the index page of the website UI tests validate interface attributes such as links in the navigation bar, file formats that are accepted through the dropzone, and one files can be uploaded at a time. Tests written for the result page verify detected objects' names are displayed as a list, the number of audio tags matches the length of the objects' names list, that associated audio is retrieved and finally, there is a panning value present in each audio tag. A bug was found after running these tests. The bug was if a file extension is in uppercase or .png format the file will not be accepted by the dropzone. 
+
+Through coarse personal testing before User Acceptance Testing (UAT) a 2 substantial bugs were detected. The first bug was if an object is present that does not have a valid associated sound file, a 404 response code is returned as there is no file to be found or retrieved. This meant that no other successfully retrieved audio files were being triggered. The solution for this is to map silent objects to an mp3 file that contains 250 milliseconds of silence. The second bug was if an object were to be located in the center of the image, its audio was grossly misplaced to be either panned at -1 or +1 position. The cause of the bug was that too many decimal places were being returned by calculation of the center of each of the bounding boxes that surround the detected objects. In an aim to be exact a bug was introduced as Web Audio API can only deal with panner values that contain up to 1 decimal place.
+
+A group of three people were selected for UAT of the application. The testers received a high level explanation of the project and were asked to explore the application intuitively. This process uncovered that iOS and Safari are not currently supported by the application.
+
+## System Evaluation
+
+15 people were asked to use the application and fill out a survey that reflects their experience and general thoughts. 33.34% of the test group either had a visual impairment themselves, or knew someone with a visual impairment. The questions on the survey focused on technical aspects of the interaction such as image upload times, rejected file types and devices used, as well as expectation and opinion based questions.
+
+At the time of the survey the bug regarding file extensions in uppercase and .png files had not yet been fixed. Even with this bug present, 80% reported no issue when uploading an image. One of the issue participants that they had been using an android device at the time of testing. Regarding the speed of the system, 100% reported that image processing took no more than 5 seconds before being redirected to the results page.
+
+93.33% of participants reported that successful object detection had occurred. When asked if the sounds played matched their expectation of what the object actually sounds like 73.33%  of the group said yes. One participant commented that they expected a "woof" noise for a dog as opposed to a panting noise. Another participant specified that they had uploaded an image of multiple children playing and that the "the sound of human doesn't fit the sound of children".
+
+20% of participants stated that binaural audio was not placed as they had anticipated however only 53.33% of participants wore headphones, which could have been a contributing part of this feedback. A document containing the full survey question set and responses can be found in Appendix B.
+
+### Did the application successfully identify the object(s) in your image?
+
+| Answer choices    | Responses |
+|-------------------|-----------|
+| Yes               | 53.33%    |
+| No                | 6.67%     |
+| Some, but not all | 40.00%    |
+
+### When the audio played, did it play in relation to the object that was detected (if a dog was found in the left of the image, was the dog sound played in the left headphone)?
+
+| Answer choices | Responses |
+|----------------|-----------|
+| Yes            | 53.33%    |
+| No             | 20.00%    |
+| Other          | 26.67%    |
+
+### Overall, how would you rate this application?
+
+| Answer choices | Responses |
+|----------------|-----------|
+| Excellent      | 73.33%    |
+| Very good      | 26.67%    |
+| Good           | 0.00%     |
+| Fair           | 0.00%     |
+| Poor           | 0.00%     |
 
 
