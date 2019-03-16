@@ -258,45 +258,45 @@ FLASK_APP=main.py FLASK_DEBUG=1 flask run
 
 ```
 app
-├── detected_images
-│   ├── dog.jpg
-│   └── dog_car.jpeg
-│
-├── main.py
-│
-├── object_detection
-│   ├── __init__.py
-│   │
-│   ├── data
-│   │   ├── __init__.py
-│   │   └── mscoco_label_map.pbtxt
-│   │
-│   ├── object_detection_main.py
-│   │
-│   ├── ssd_mobilenet_v1_coco_2017_11_17.tar.gz
-│   │
-│   ├── test_images
-│   │   ├── image1.jpg
-│   │   ├── image2.jpg
-│   │   └── image_info.txt
-│   └── utils
-│       ├── __init__.py
-│       ├── label_map_util.py
-│       ├── label_map_util_test.py
-│       ├── visualization_utils.py
-│       └── visualization_utils_test.py
-│
-├── ssd_mobilenet_v1_coco_2017_11_17
-│   └── frozen_inference_graph.pb
-│
-├── templates
-│   ├── results.html
-│   ├── skeleton.html
-│   └── upload.html
-│
-└── uploads
-    ├── dog.jpg
-    └── dog_car.jpeg
+|-- detected_images
+|   |-- dog.jpg
+|   `-- dog_car.jpeg
+|
+|-- main.py
+|
+|-- object_detection
+|   |-- __init__.py
+|   |
+|   |-- data
+|   |   |-- __init__.py
+|   |   `-- mscoco_label_map.pbtxt
+|   |
+|   |-- object_detection_main.py
+|   |
+|   |-- ssd_mobilenet_v1_coco_2017_11_17.tar.gz
+|   |
+|   |-- test_images
+|   |   |-- image1.jpg
+|   |   |-- image2.jpg
+|   |   `-- image_info.txt
+|   `-- utils
+|       |-- __init__.py
+|       |-- label_map_util.py
+|       |-- label_map_util_test.py
+|       |-- visualization_utils.py
+|       `-- visualization_utils_test.py
+|
+|-- ssd_mobilenet_v1_coco_2017_11_17
+|   `-- frozen_inference_graph.pb
+|
+|-- templates
+|   |-- results.html
+|   |-- skeleton.html
+|   `-- upload.html
+|
+`-- uploads
+    |-- dog.jpg
+    `-- dog_car.jpeg
 
 ```
 
@@ -348,20 +348,20 @@ An output image is generated and written to `/detected_images`; this image will 
 # basic Flask-Dropzone & Flask-Uploads file structure
 
 app
-├── detected_images
-│   ├── dog.jpg
-│   └── dog_car.jpeg
-│
-├── main.py
-│
-├── templates
-│   ├── results.html
-│   ├── skeleton.html
-│   └── upload.html
-│
-└── uploads
-    ├── dog.jpg
-    └── dog_car.jpeg
+|-- detected_images
+|   |-- dog.jpg
+|   `-- dog_car.jpeg
+|
+|-- main.py
+|
+|-- templates
+|   |-- results.html
+|   |-- skeleton.html
+|   `-- upload.html
+|
+`-- uploads
+    |-- dog.jpg
+    `-- dog_car.jpeg
 
 ```
 
@@ -515,45 +515,45 @@ def results():
 # basic file structure for object detection
 
 app
-├── detected_images
-│   ├── dog.jpg
-│   └── dog_car.jpeg
-│
-├── main.py
-│
-├── object_detection
-│   ├── __init__.py
-│   │
-│   ├── data
-│   │   ├── __init__.py
-│   │   └── mscoco_label_map.pbtxt
-│   │
-│   ├── object_detection_main.py
-│   │
-│   ├── ssd_mobilenet_v1_coco_2017_11_17.tar.gz
-│   │
-│   ├── test_images
-│   │   ├── image1.jpg
-│   │   ├── image2.jpg
-│   │   └── image_info.txt
-│   └── utils
-│       ├── __init__.py
-│       ├── label_map_util.py
-│       ├── label_map_util_test.py
-│       ├── visualization_utils.py
-│       └── visualization_utils_test.py
-│
-├── ssd_mobilenet_v1_coco_2017_11_17
-│   └── frozen_inference_graph.pb
-│
-├── templates
-│   ├── results.html
-│   ├── skeleton.html
-│   └── upload.html
-│
-└── uploads
-    ├── dog.jpg
-    └── dog_car.jpeg
+|-- detected_images
+|   |-- dog.jpg
+|   `-- dog_car.jpeg
+|
+|-- main.py
+|
+|-- object_detection
+|   |-- __init__.py
+|   |
+|   |-- data
+|   |   |-- __init__.py
+|   |   `-- mscoco_label_map.pbtxt
+|   |
+|   |-- object_detection_main.py
+|   |
+|   |-- ssd_mobilenet_v1_coco_2017_11_17.tar.gz
+|   |
+|   |-- test_images
+|   |   |-- image1.jpg
+|   |   |-- image2.jpg
+|   |   `-- image_info.txt
+|   `-- utils
+|       |-- __init__.py
+|       |-- label_map_util.py
+|       |-- label_map_util_test.py
+|       |-- visualization_utils.py
+|       `-- visualization_utils_test.py
+|
+|-- ssd_mobilenet_v1_coco_2017_11_17
+|   `-- frozen_inference_graph.pb
+|
+|-- templates
+|   |-- results.html
+|   |-- skeleton.html
+|   `-- upload.html
+|
+`-- uploads
+    |-- dog.jpg
+    `-- dog_car.jpeg
 
 ```
 
@@ -723,27 +723,27 @@ item {
 # basic file structure for sound retrieval
 
 app
-│
-├── detected_images
-│
-├── main.py
-│
-├── sound_retrieval
-│   ├── sound_list.json
-│   └── trigger_sound.py
-│
-├── static
-│   ├── js
-│   │   ├── audio_panning.js
-│   │   └── buffer-loader.js
-│   │
-│   └── sounds
-│
-├── templates
-│   ├── results.html
-│   └── skeleton.html
-│
-└── uploads
+|
+|-- detected_images
+|
+|-- main.py
+|
+|-- sound_retrieval
+|   |-- sound_list.json
+|   `-- trigger_sound.py
+|
+|-- static
+|   |-- js
+|   |   |-- audio_panning.js
+|   |   `-- buffer-loader.js
+|   |
+|   `-- sounds
+|
+|-- templates
+|   |-- results.html
+|   `-- skeleton.html
+|
+`-- uploads
 
 
 ```
