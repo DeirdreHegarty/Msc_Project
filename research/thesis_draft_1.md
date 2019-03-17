@@ -1000,7 +1000,7 @@ BufferLoader.prototype.load = function() {
 \pagebreak
 
 
-\includepdf[pages=1,pagecommand=\section{Appendix C}]{appendix-c.pdf}
+\includepdf[pages=1,pagecommand=\section{Appendix C},offset=0 -50]{appendix-c.pdf}
 \includepdf[pages=2-]{appendix-c.pdf}
 
 
