@@ -1,5 +1,5 @@
 ---
-title:              Kay: Adding Soundscapes to Imagery
+title:              "Kay: Adding Soundscapes to Imagery"
 author:             Deirdre Hegarty, 15187799
 email:              deirdre.hegarty@mu.ie
 date:               March, 2019
@@ -12,6 +12,9 @@ geometry:           margin=25mm
 linespacing:        1.15
 papersize:          A4
 link-citations:     true
+header-includes:
+- |
+    \usepackage{pdfpages}
 ...
 
 
@@ -179,9 +182,6 @@ At the time of the survey the bug regarding file extensions in uppercase and .pn
 20% of participants stated that binaural audio was not placed as they had anticipated however only 53.33% of participants wore headphones, which could have been a contributing part of this feedback. A document containing the full survey question set and responses can be found in Appendix C.
 
 
-\pagebreak
-
-
 | Answer choices    | Responses |
 |-------------------|-----------|
 | Yes               | 53.33%    |
@@ -340,6 +340,9 @@ An output image is generated and written to `/detected_images`; this image will 
   * triggers tf object detection on uploaded images
   * accepts list of detected classes & displays list along with uploaded image
   
+
+\pagebreak
+
 
 # Appendix B
 
@@ -997,8 +1000,7 @@ BufferLoader.prototype.load = function() {
 \pagebreak
 
 
-# Appendix C
-
-
+\includepdf[pages=1,pagecommand=\section{Appendix C}]{appendix-c.pdf}
+\includepdf[pages=2-]{appendix-c.pdf}
 
 
