@@ -249,7 +249,7 @@ Along with the expansion of audio, an expanded detected class list for images wo
 
 # Appendix A
 
-## Image Labelleing Prototype [Weeks 1 - 5]
+## Image Labelling Prototype [Weeks 1 - 5]
 
 ### To Run: 
 
