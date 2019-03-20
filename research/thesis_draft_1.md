@@ -1,7 +1,9 @@
 ---
-title:              "Kay: Adding Soundscapes to Imagery"
-author:             Deirdre Hegarty, 15187799
-email:              deirdre.hegarty@mu.ie
+title:              "Kay"
+author:             Deirdre Hegarty
+year: 				2019
+degree: 			M.Sc.
+course: 			Computer Science (Applied)
 date:               March, 2019
 supervisor: 		Dr. Charles Markham
 department: 		Department of Computer Science
@@ -17,29 +19,75 @@ header-includes:
     \usepackage{pdfpages}
 ...
 
+\pagebreak
+
+
+# Declaration
+
+I hereby certify that this material, which I now submit for assessment on the program of study as part of M.Sc. in Computer Science (Applied) qualification, is entirely my own work and has not been taken from the work of others - save and to the extent that such work has been cited and acknowledged within the text of my work. 
+
+
+I hereby acknowledge and accept that this thesis may be distributed to future final year students, as an example of the standard expected of final year projects.
+
+&nbsp;
+
+Signed:  Deirdre Hegarty  				
+
+Date:  19/03/2019
+
+
 
 \pagebreak
 
 
-# Introduction
+# Acknowledgement
 
-## Abstract
+Firstly I would like to thank my supervisor Charles Markham for his continued guidance, encouragement and expertise with this project. Charles struck the ultimate balance between providing me with the support I needed whilst allowing me the space that I required to explore this area of study. He believed in my project and helped me to grow it from concept to a tangible application.
+
+I would like to thank Jack for his unending support, patience, and encouragement that remained constant no matter the time of day.
+
+Thank you to my parents who supported me emotionally and financially through my newest journey into the realm of Computer Science.
+
+Thanks to Sarah for spending endless hours proof-reading my writings. Thank you for always having your door open to me and making sure I had the support that I needed academically and emotionally. You have always been my rock, and I admire you greatly for everything that you do and everything that you are.
+
+Thank you to Gavin for being my big brother.
+
+I would like to thank all of the faculty at Maynooth University for creating an inviting environment of learning. Everyone has been approachable, knowledgeable and supportive and I am very grateful for my experience there.
+
+Thank you to everyone who has spared some time for me; it is all the small things that matter.
+
+\pagebreak
+
+
+# Abstract
 
 The intention of Kay is to explore the encoding of meaning into audio, and how that in turn represents its visual counterpart. Using a machine learning framework and audio references, photographs will be dissected into their object content labels. These labels will describe what is present in each image. Once images have been analysed, an audio sample that best describes each object label are retrieved from an audio reference list. The sound descriptions are then recreated in a binaural sound simulation of the input image. Multiple detected objects add to the richness and immersion of the scene. The result is to create an auditory explanation of the scene through sounds instead of words; to experience a description of an image void of language.
 
-## Motivation
+\pagebreak
 
-Much research has been invested in the dissection of images into text and speech; both channels embedded in human interpretation and understanding. Text-based descriptions are heavily restricted by language. Meaning can become lost between the translation of one language description to another. Each layer of abstraction introduces an opportunity for miscommunication or ill interpretation of the visual. Budd speaks about the lexical ambiguity of language-based descriptions, explaining how "a 'mole' may be a burrowing animal or an information gatherer in an organization [@budd]". This ambiguity not only means that a description may be interpreted in different ways in a given language, but also means that once translated into another language, the chosen interpretation may have been inaccurate. This new inaccurate description may then be subjected to its own language specific misinterpretations. Thus, creating a tree of correct and incorrect possible descriptions of an event.
+
+\pagenumbering{arabic}
+
+# Chapter One: Introduction
+
+## 1.1 Kay
+
+The name of the project is a homage to Kathleen (Kay) Antonelli (1921-2006); maiden name Mc. Nulty. Kay's first language was Irish, which she spoke exclusively until her first days at Hallahan Catholic High School in Philadelphia [@donegalweb]. From learning English, to graduating Chestnut Hill College with a Bachelors degree in mathematics, to wiring relay multipliers in IBM machines [@kaydoc], Kay's intelligence transcended the gender-based limitation of that era. She was a pioneer of her time, teaching herself the skills necessary to work alongside six other women in programming the world's first electronic computer 'Electronic Numerical Integrator and Computer' (ENIAC) [@enaic]. She stands as an inspirational figure to Irish women in the field of Computer Science. 
+
+
+## 1.2 Motivation
+
+Much research has been invested in the dissection of images into text and speech; both channels embedded in human interpretation and understanding. Text-based descriptions are heavily restricted by language. Meaning can become lost between the translation of one language description to another. Each layer of abstraction introduces an opportunity for miscommunication or ill interpretation of the visual. Budd speaks about the lexical ambiguity of language-based descriptions, explaining how "a 'mole' may be a burrowing animal or an information gatherer in an organization [@budd]." This ambiguity not only means that a description may be interpreted in different ways in a given language, but also means that once translated into another language, the chosen interpretation may have been inaccurate. This new inaccurate description may then be subjected to its own language specific misinterpretations. Thus, creating a tree of correct and incorrect possible descriptions of an event.
 
 "A picture is worth a thousand words", an English idiom, encapsulates the idea that there are limits associated with language-based descriptions of a scene. Ultimately, there can only ever be a finite amount of words that will accurately describe the seen. This idiom is said to be derived from an advertisement in Syracuse Post Standard newspaper - "Use a picture. It's worth a thousand words [@englishidiom]."
 
-Listening to speech describing a narrative can reveal to the listener, factual data about the scene. Because the predominant exploration of image has been in relation to its conversion into a language-based media, user experience and immersion have been set to the background. 
+Listening to speech describing a narrative can reveal to the listener, factual data about the scene. The predominant exploration of image has been in relation to its conversion into a language-based media, and because of this user experience and immersion have been set to the background. 
 
 The visual and auditory systems overlap; each sensory system providing the missing piece for the other [@seeingsounds]. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same. Audio has a huge affect on the experience of an event because the "auditory system gives more precise temporal information and appears to dominate perception of when events occur [@seeingsounds2]." It is over time that we learn how duration and auditory cognition encodes importance of event.
 
 An auditory response that is produced naturally by an object can be a pure description of event. It evokes a more primitive response that can reduce the misinterpretation of its visual counterpart. It is free of language and is an uninhibited description of a real-time interaction. Auditory response is less likely to become tarnished by misinterpretation, because it is not dependent on language or speech. What is meant by this is, more can be attributed to hearing the sound an object produces as opposed to being presented with a sentence that describes the same. Kay seeks to evoke a hearing of "another story behind the main narrative, the hidden story arising from the seat of the unconscious [@soundandsilence]." A sense of otherness is created through the use of audio samples as opposed to a formal description of the scene through sentences, synthesised by a vocoder. 
 
-## Problem Statement
+## 1.3 Problem Statement
 
 According to the 2016 Census, the percentage of people with visual impairment increased by 6% between 2011 - 2016. This means that in 2016, 54,810 people living in Ireland were acknowledged as being visually impaired [@censusprofile9]. The work of Jiang, Lin and Qu addresses real-time image to speech processing. Their work outlines the implementation of a system where "both visual object and audio sound can be spatially localized [@letblindsee]." Although their project implements spatial sound techniques for placement of audio in space, the use of description through language removes the participant from the immediate experience of the scene.
 
@@ -49,15 +97,15 @@ The NCSE Press Release outlines that 1 in every 65 children in Ireland are diagn
 \pagebreak
 
 
-# Topic Material
+# Chapter Two: Topic Material
 
 Although there exists multiple tools for the conversion of image into another format, none implement image to sound in the same way as is intended by Kay.  
 
 VizWiz [@vizwiz] and TapTapSee [@taptap] are examples of two mobile applications designed to assist the visually impaired. VizWiz implements 'quikTurkit', a project specific feature built using the TurKit API [@turkit] for recruiting human workers to executing tasks on Amazon Mechanical Turk [@mechanicalturk]. The application makes use of image, voice recording and speech to text, to facilitate users in receiving information about a specific object or scene. VizWiz's academic paper highlights issues regarding speech to text conversion, stating that it has a 15.8% success rate in accurately converting voice recorded questions into text for later answering. Although image classification and analysis relies on this conversion, the human classifier can listen to the voice recorded question captured by the user. Therein lies a possible issue or restriction caused by language based analysis. 
 
-Both VizWiz and TapTapSee use VoiceOver [@voiceover], a gesture-based screen reader on iOS. However, TapTapSee does all image processing programmatically as opposed to outsourcing to Amazon Mechanical Turk's human workers. Because of the nature of the application, it cannot answer the same multitude of questions as VizWiz. Its focus is on the classification of objects, as opposed to VizWiz's capability of answering virtually any question about an image. It has a predefined number of detectable object classes which it uses to classify objects in a given image. The answer is spoken to the user and displayed on the device screen in text format. Although the application allows for multiple languages, it does not supply the user with information such as location. Thus removing the user from the immediate experience of object interaction.
+Both VizWiz and TapTapSee use VoiceOver [@voiceover], a gesture-based screen reader on iOS. However, TapTapSee does all image processing programmatically as opposed to outsourcing to Amazon Mechanical Turk's human workers. Due to the nature of the application, it cannot answer the same multitude of questions as VizWiz. Its focus is on the classification of objects, as opposed to VizWiz's capability of answering virtually any question about an image. It has a predefined number of detectable object classes which it uses to classify objects in a given image. The answer is spoken to the user and displayed on the device screen in text format. Although the application allows for multiple languages, it does not supply the user with information such as location. Thus removing the user from the immediate experience of object interaction.
 
-Gupta and Mannem's work explores the synthesis of anthropomorphic descriptions through the use of image annotations in the form of captioning. Their work puts emphasis on how "human-like descriptions can be generated" through task-based evaluation of results, and the need for "automatic conversion of image annotations to natural language [@annotationdesc]." Because their predominant focus is on human-like descriptions of images, the importance of description has been placed on factual labelling of images as opposed to the direct experience of image through non-language based channels.
+Gupta and Mannem's work explores the synthesis of anthropomorphic descriptions through the use of image annotations in the form of captioning. Their work puts emphasis on how "human-like descriptions can be generated" through task-based evaluation of results, and the need for "automatic conversion of image annotations to natural language [@annotationdesc]." As their predominant focus is on human-like descriptions of images, the importance of description has been placed on factual labelling of images as opposed to the direct experience of image through non-language based channels.
 
 Perhaps the closest relating research to the work outlined in this paper, is outlined in 'The Visual Microphone: Passive Recovery of Sound from Video' [@visualmic]. High speed footage captures vibrations on the surface of an object. This footage then allows for the sound that has been encoded in the object's surface to be recovered [@visualmic]. The object in question acts as the medium through which sound is visualised. This allows for a more pure retrieval of audio from visual. Although the user can remain present within the description of event, the object that is being analysed is acting as a proxy amplifier for sound events tied to other objects. Therefore the project does not recreate sound tied to a specific object, but the sound of surrounding objects.
 
@@ -67,9 +115,9 @@ Krishnan, Porkodi and Kanimozhi take a more conceptual approach to audio convers
 \pagebreak
 
 
-# The Solution
+# Chapter Three: The Solution
 
-## Website
+## 3.1 Website
 
 The decision for creating a web-based application stemmed from the intention of providing a readily accessible tool to a large audience. It was thought that there would be a restriction of audience if the application were to be a native application for mobile devices or desktop machines. The main advantage to making the application web-based, is the fact that it can reach a large audience on a wide variety of devices and operating systems. However, currently Apple iOS and Safari is not supported. The Bootstrap framework provides a responsive and adaptive layout for use on a multiple of device types [@bootstrap]. Bootstrap offers many predefined components and HTML and CSS-based templates to facilitate many different viewport sizes. 
 
@@ -83,7 +131,7 @@ Once a user has successfully uploaded a file, Flask passes the file to Tensorflo
 ![Schematic diagram describing the interaction of application components](../images/project_schematic_diagram1.png)
 
 
-## Object Detection
+## 3.2 Object Detection
 
 Object detection is handled by TensorFlow. TensorFlow is an open-source library for numerical computation, and is well known for its use in the field of machine learning and deep learning [@tensorflow]. The dataset used by the Convolutional Neural Network (CNN) model is Microsoft COCO [@coco]. The Microsoft COCO dataset contains 91 "thing" object categories. Compared to PASCAL VOC 2012 [@pascal], SUN [@sun] and ImageNet [@imagenet], Microsoft COCO has more instances per category, and focusses on the detection of objects in their natural contexts. 
 
@@ -100,11 +148,11 @@ The retrieved coordinates contain the min and max X and Y values for each boundi
 Originally Keras, a high-level neural networks API [@keras] which can run on top of Tensorflow, was considered to be a good tool for developing Kay. Using Keras would have proven problematic later in the project when retrieving audio for corresponding object classes. Keras provides the use of simple APIs, in turn limiting the control over data manipulation. As a result of the decision to use Tensorflow directly, it was possible to add to and alter the code for the CNN model, creating extra functionality that was not already present.
 
 
-## Label Retrieval
+## 3.3 Label Retrieval
 
 After the input image has been processed by Tensorflow, label retrieval takes place. A series of method calls retrieve the location for each detected object and their associated sounds from a JSON array. A dictionary mapping sounds to location is then returned to Flask.
 
-Each JSON object contains the name, id, display name and path to associated sound file. The name and id keys contain the same values that are used by the Tensorflow CNN, while the display name key references the name of the detected object as it is to be displayed. Below is an example of one such JSON object.
+Each JSON object contains the name, id, display name and path to associated sound file. The name and id keys contain the same values that are used by the Tensorflow CNN, while the display name key references the name of the detected object as it is to be displayed. Below is an example of one such JSON object:
 
 ```javascript
 {
@@ -115,7 +163,7 @@ Each JSON object contains the name, id, display name and path to associated soun
 }
 ```
 
-To calculate the binaural audio position, the center point of the object is found. Next, a transformation is applied to transform the objects centre point, which is relative to the image(0...1), to the range of the audio panner (-1...1). The following equation reflects the aforementioned transformation.
+To calculate the binaural audio position, the center point of the object is found. Next, a transformation is applied to transform the objects centre point, which is relative to the image(0...1), to the range of the audio panner (-1...1). The following equation reflects the aforementioned transformation:
 
 \begin{align}
 & \left( \frac{X_{min} + X_{max}}{2} \right)                             & \text{Find the centre point of the object}                  & \nonumber \\
@@ -124,43 +172,43 @@ To calculate the binaural audio position, the center point of the object is foun
 \end{align}
 
 
-## Sound Retrieval and Triggering
+## 3.4 Sound Retrieval and Triggering
 
 Before research had taken place, it was assumed that Python would provide a perfect solution for triggering multiple audio files via different channels. An initial solution for dynamically retrieving audio relating to specific object classes was developed using Pygame [@pygame]. However, there came an issue when integrating the Pygame module into the Flask application. Pygame and Flask compete to work on the main thread; this competition for the main thread results in runtime errors and unpredictable behaviour. Instead of trying to process the audio functionality in the backend, a client-side solution using Web Audio API [@web_audio] was implemented. Written in JavaScript, Web Audio API allows for the same functionality as Pygame, without restricting audio samples to a specific number of channels.
 
-JavaScript is used to map each HTML audio tag to a function that extracts the pan value from the tag's class attribute. The pan value and audio file is loaded into a buffer. Each audio file in the buffer is triggered at two-second intervals. Web Audio API offers PannerNodes  [@web_audio_pan], which allow for each audio file to be panned relative to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix B, under the heading 'Sound Retrieval.'
+JavaScript is used to map each HTML audio tag to a function that extracts the pan value from the tag's class attribute. The pan value and audio file is loaded into a buffer. Each audio file in the buffer is triggered at two-second intervals. Web Audio API offers PannerNodes [@web_audio_pan], which allow for each audio file to be panned relative to their position in the detected input image. BufferLoader [@web_audio_buf] used alongside the PannerNodes simulate the placement of audio on a virtual 3-dimensional audio plane. A more detailed explanation of this functionality can be found in Appendix B, under the heading 'Sound Retrieval.'
 
-Kay 1.0 does not make use of an API for retrieving audio. FreeSound offers an API for the retrieval of specific and related sounds [@freesound]. The idea of incorporating an API would make for dynamic sound retrieval for attaching multiple sound profiles to a specific object; however, the poor quality of a large percentage of sounds available via FreeSound API did not validate a decision to include it at this present time. An alternate decision was made to store audio files in a local directory. The files are sourced from two royalty free sound effect libraries, Zapsplat [@zapsplat] and AudioHero [@audiohero]. 
+Kay 1.0 does not make use of an API for retrieving audio. FreeSound offers an API for the retrieval of specific and related sounds [@freesound]. The idea of incorporating an API would make for dynamic sound retrieval for attaching multiple sound profiles to a specific object; however, the poor quality of a large percentage of sounds available via FreeSound API did not validate a decision to include it at this present time. An alternate decision was made to store audio files in a local directory. The files are sourced from two royalty-free sound effect libraries, Zapsplat [@zapsplat] and AudioHero [@audiohero]. 
 
-The decision of placing a 2 second gap between the triggering of each audio sample was an instinctual and intuitive one. After researching the motive behind this subconscious decision it was uncovered that there appears to be an agreed upon standard from the 1980s regarding the 2 second default gap between audio tracks on a CD. Although multiple forums contain arguments as to whether the standard was really a standard at all, it is said that "In 1980 Philips and Sony produced their Red Book, which laid down all the standards for compact discs [@bbc]." In its online manual 'Splitting a recording into separate tracks', Audacity reference the 2 second gap advising to "add the standard 2-second gap between each track" while exporting multiple tracks to a CD [@audacity]. 
+The decision of placing a two-second gap between the triggering of each audio sample was an instinctual and intuitive one. After researching the motive behind this subconscious decision it was uncovered that there appears to be an agreed-upon standard from the 1980s regarding the two-second default gap between audio tracks on a CD. Although multiple forums contain arguments as to whether the standard was really a standard at all, it is said that "In 1980 Philips and Sony produced their Red Book, which laid down all the standards for compact discs [@bbc]." In its online manual 'Splitting a recording into separate tracks', Audacity reference the two-second gap advising to "add the standard 2-second gap between each track" while exporting multiple tracks to a CD [@audacity]. 
 
-There was a conscious decision made to retrieve only true sounds emitted by an object, and not relative sounds to where an object resides. Because of this decision, there are many detected objects that do not have an associated sound; the objects in question are silent and do not produce any sounds themselves. With this decision comes an issue regarding context. A plate that is flat on a table makes no noise, however there is an anticipation of sound if presented with an image of a plate falling towards the ground. This is a bigger question that cannot immediately be addressed as it is currently out of the scope of this project.
+There was a conscious decision made to retrieve only true sounds emitted by an object, and not relative sounds to where an object resides. As a result of this decision, there are many detected objects that do not have an associated sound; the objects in question are silent and do not produce any sounds themselves. With this decision comes an issue regarding context. A plate that is flat on a table makes no noise, however there is an anticipation of sound if presented with an image of a plate falling towards the ground; this is a bigger question that cannot immediately be addressed as it is currently out of the scope of this project.
 
-## Documentation and Version Control
+## 3.5 Documentation and Version Control
 
-Throughout the development of Kay, Git [@git] has been used to track code progression and documentation. Git, along with Github [@github] allows for local and remote versions of the project to exist. While working on a specific feature Git is used to locally store and document code changes. Once a more realised version of the feature is completed, the changes are then pushed to the remote repository on Github. The repository that contains Kays source code is public and facilitates subscribers to track any changes to the code base, refinement of features, bug fixes and extra documentation; it marks all progress made throughout the year, and is a mapping of process and anaylsis in real-time.
+Throughout the development of Kay, Git [@git] has been used to track code progression and documentation. Git, along with GitHub [@github] allows for local and remote versions of the project to exist. While working on a specific feature Git is used to locally store and document code changes. Once a more realised version of the feature is completed, the changes are then pushed to the remote repository on GitHub. The repository that contains Kay's source code is public and facilitates subscribers to track any changes to the code base, refinement of features, bug fixes and extra documentation; it marks all progress made throughout the year, and is a mapping of process and anaylsis in real-time.
 
-The chosen documentation format for Kay is Markdown, a plain text markup language that can be converted into a multiple of different formats. Github supports Markdown and so no conversion is necessary to view documents via a browser. The simplicity of Markdown has made it easy to write and commit documents to Github for version control; it also allows for the conversion of documents into another file format using Pandoc [@pandoc]. Written in Haskell, Pandoc is an open-source document converter that is well maintained and has a large community.
+The chosen documentation format for Kay is Markdown, a plain text markup language that can be converted into many different formats. GitHub supports Markdown and so no conversion is necessary to view documents via a browser. The simplicity of Markdown has made it easy to write and commit documents to GitHub for version control; it also allows for the conversion of documents into another file format using Pandoc [@pandoc]. Written in Haskell, Pandoc is an open-source document converter that is well maintained and has a large community.
 
-Kay was constructed on three stages. The first stage being the object detection prototype, the second was the audio retrieval, then the final stage combined the object detection and audio retrieving prototypes. After the prototypes were successfully combined into a Flask application, the final audio triggering was completed. The first stage has been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/code/app/docs/image_labelling_w1_to_w5.md) and in Appendix A. The remaining stages have been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/research/Project_Breakdown.md) and in Appendix B.
+Kay was constructed in three stages: The first stage being the object detection prototype; the second was the audio retrieval; then the final stage combined the object detection and audio retrieving prototypes. After the prototypes were successfully combined into a Flask application, the final audio triggering was completed. The first stage has been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/code/app/docs/image_labelling_w1_to_w5.md) and in Appendix A. The remaining stages have been documented [here](https://github.com/DeirdreHegarty/Msc_Project/blob/master/research/Project_Breakdown.md) and in Appendix B.
 
 
 \pagebreak
 
 
-# Verification and Evaluation
+# Chapter Four: Verification and Evaluation
 
-## Software Verification
+## 4.1 Software Verification
 
-Selenium facilitates the automation of web browsers for UI testing  [@selenium]. Selenium itself does not offer a testing frame work. It does however offers Python bindings to access Python's unittest module [@pyselenium]. On the index page of the website UI tests validate interface attributes such as links in the navigation bar, file formats that are accepted through the dropzone, and that only one file can be uploaded at a time. Tests written for the result page verify that detected objects' names are displayed as a list, the number of audio tags matches the length of the objects' names list, that associated audio is retrieved, and finally, the tests verify that there is a panning value present in each audio tag. A large bug was found after executing these tests. The bug meant that the dropzone rejected any file if its extension was either in uppercase or .png format. 
+Selenium facilitates the automation of web browsers for UI testing  [@selenium]. Selenium itself does not offer a testing frame work. It does however offer Python bindings to access Python's unittest module [@pyselenium]. On the index page of the website UI tests validate interface attributes such as links in the navigation bar, file formats that are accepted through the dropzone, and that only one file can be uploaded at a time. Tests written for the result page verify that detected objects' names are displayed as a list, the number of audio tags matches the length of the objects' names list, associated audio is retrieved, and finally, the tests verify that there is a panning value present in each audio tag. A large bug was found after executing these tests. The bug meant that the dropzone rejected any file if its extension was either in uppercase or .png format. 
 
 Through coarse personal testing before Alpha Testing and User Acceptance Testing (UAT), two substantial bugs were detected. The first bug occurred when an object was present that did not have a valid associated sound file, a 404 Not Found response code was returned. This meant that no other successfully retrieved audio files were being triggered. The solution for this was to map silent objects to an mp3 file that contains 250 milliseconds of silence. 
 
-The second bug was if an object were to be located in the center of the image, its audio was grossly misplaced to be either panned at -1 or +1 position(far left or far right in the aural plane). The bug was caused by returning too many decimal places when calculating the center of the bounding boxes that surround each of the detected objects. This bug was introduced as a by-product of trying produce accurate calculations of position. Web Audio API can only correctly handle panner values that contain up to 1 decimal place.
+The second bug was if an object were to be located in the center of the image, its audio was grossly misplaced to be either panned at -1 or +1 position (far left or far right in the aural plane). The bug was caused by returning too many decimal places when calculating the center of the bounding boxes that surround each of the detected objects. This bug was introduced as a by-product of trying produce accurate calculations of position. Web Audio API can only correctly handle panner values that contain up to 1 decimal place.
 
 A group of three people were selected for a Alpha Testing of the application. The testers received a high level explanation of the project and were asked to explore Kay intuitively. This process uncovered that iOS and Safari are not currently supported by Kay 1.0.
 
-## System Evaluation
+## 4.2 System Evaluation
 
 The 15 people selected for UAT were asked to use the application and fill out an anonymous survey that reflects their experience and general thoughts. The test group varied in gender, race, cultural background and technical background. 33.34% of the test group either had a visual impairment themselves, or knew someone with a visual impairment. The questions on the survey focused on technical aspects of the interaction such as image upload times, rejected file types and devices used, as well as expectation and opinion based questions.
 
@@ -168,7 +216,7 @@ The 15 people selected for UAT were asked to use the application and fill out an
 ![Do you have any visual impairment, or know someone with a visual impairment?](../images/surveyq1.png)
 
 
-At the time of the survey the bug regarding file extensions in uppercase and .png files had not yet been fixed. Even with this bug present, 80% reported no issue when uploading an image. One of the participants who encountered this issue stated that they had been using an android device at the time of testing. Regarding the speed of the system, 100% reported that image processing took no more than 5 seconds before being redirected to the results page. 66.67% of these responses stated that image processing and redirection took only a few second.
+At the time of the survey the bug regarding file extensions in uppercase and .png files had not yet been fixed. Even with this bug present, 80% reported no issue when uploading an image. One of the participants who encountered this issue stated that they had been using an android device at the time of testing. Regarding the speed of the system, 100% reported that image processing took no more than 5 seconds before being redirected to the results page. 66.67% of these responses stated that image processing and redirection took only a few seconds.
 
 93.33% of participants reported that successful object detection had occurred. When asked if the sounds played matched their expectation of what the object actually sounds like, 73.33%  of the group said yes. One participant commented that they expected a "woof" noise for a dog as opposed to a panting noise. Another participant specified that they had uploaded an image of multiple children playing and that the "the sound of human doesn't fit the sound of children".
 
@@ -179,7 +227,7 @@ At the time of the survey the bug regarding file extensions in uppercase and .pn
 ![How likely is it that you would recommend this application to a friend or colleague?](../images/surveyq10.png)
 
 
-20% of participants stated that binaural audio was not placed as they had anticipated however only 53.33% of participants wore headphones, which could have been a contributing part of this feedback. A document containing the full survey question set and responses can be found in Appendix C.
+20% of participants stated that binaural audio was not placed as they had anticipated, however, only 53.33% of participants wore headphones, which could have been a contributing part of this feedback. A document containing the full survey question set and responses can be found in Appendix C.
 
 
 | Answer choices    | Responses |
@@ -189,7 +237,7 @@ At the time of the survey the bug regarding file extensions in uppercase and .pn
 | Some, but not all | 40.00%    |
 
 
-Tab.1: Did the application successfully identify the object(s) in your image?
+Table 1: Did the application successfully identify the object(s) in your image?
 
 
 | Answer choices | Responses |
@@ -199,7 +247,7 @@ Tab.1: Did the application successfully identify the object(s) in your image?
 | Other          | 26.67%    |
 
 
-Tab.2: When the audio played, did it play in relation to the object that was detected (if a dog was found in the left of the image, was the dog sound played in the left headphone)?
+Table 2: When the audio played, did it play in relation to the object that was detected (if a dog was found in the left of the image, was the dog sound played in the left headphone)?
 
 
 | Answer choices | Responses |
@@ -211,31 +259,31 @@ Tab.2: When the audio played, did it play in relation to the object that was det
 | Poor           | 0.00%     |
 
 
-Tab.3: Overall, how would you rate this application?
+Table 3: Overall, how would you rate this application?
 
 \pagebreak
 
-# Conclusions and Beginnings
+# Chapter Five: Conclusions and Beginnings
 
-## Results Discussion & Understanding Limitations
+## 5.1 Results Discussion & Understanding Limitations
 
 Experience imprints an impression on all objects, and so it is naive to assume that all people will experience, see, hear and interpret a scene in the same way. Cognition and learned associations drive how we link the visual to aural experience.
 
-Currently the mapping of audio to object is 1:1. With this comes bias and inaccuracy. A comment from one of the UAT participants regarding the expectation of hearing children playing as opposed to the more generic "human" sound, highlights a sub category of bias that is currently present in Kay. There also exists biases in relation to culture, gender and personal bias introduced by myself. Because the associated files for audio have been chosen personally, there is a personal bias introduced that is ingrained by personal experience and cognition.
+Currently the mapping of audio to object is 1:1. With this comes bias and inaccuracy. A comment from one of the UAT participants regarding the expectation of hearing children playing as opposed to the more generic "human" sound, highlights a sub-category of bias that is currently present in Kay. There also exists bias in relation to culture, gender and personal bias introduced by myself. As the associated files for audio have been chosen personally, there is a personal bias introduced that is ingrained by personal experience and cognition.
 
-The decision against using FreeSound API limits the range of audio files that can be retrieved in relation to a specific object. The use of such an API would combat, but not eradicate some bias as associated audio files could be retrieved on an alternate and random basis. 
+The decision against using FreeSound API limits the range of audio files that can be retrieved in relation to a specific object. The use of such an API would combat, but not eradicate some bias, as associated audio files could be retrieved on an alternate and random basis. 
 
-Because the accepted input is of static images, system latency has not been an issue. 100% of the UAT participants reported that it too no longer than 10 seconds between the upload time, processing and redirection to the results page. If the input were to be moving image then this 10 seconds would most likely grow exponentially in size. At this time the power of one server is enough to encapsulate all things related to Kay, however as this may not remain the case in the future.
+As the accepted input is of static images, system latency has not been an issue. 100% of the UAT participants reported that it took no longer than 10 seconds between the upload time, processing and redirection to the results page. If the input were to be moving images then this 10 seconds would most likely grow exponentially in size. At this time the power of one server is enough to encapsulate all things related to Kay, however this may not remain the case in the future.
 
-There are more questions to be asked and answered, such as "what is the value of detecting multiple object in a specific category", and "should there be some sort of cap of threshold". There is value in distinguishing aurally the difference between 1 and 5 dogs; but perhaps the difference between triggering the audio for 20 dogs versus 50 dogs does not add any more value to the user experience or aural context of a scene. However, the response to Kay in its current state has been very positive. This is illustrated by the responses captures by the survey in Table 3 and in Figure 6.
+There are more questions to be asked and answered, such as 'what is the value of detecting multiple object in a specific category,' and 'should there be some sort of cap of threshold.' There is value in distinguishing aurally the difference between 1 and 5 dogs; perhaps the difference between triggering the audio for 20 dogs versus 50 dogs does not add any more value to the user experience or aural context of a scene. However, the response to Kay in its current state has been very positive. This is illustrated by the responses captured by the survey in Table 3 and in Figure 6.
 
-## Future Work
+## 5.2 Future Work
 
-There are some aspects of Kay that could benefit from further development. The first being the object associated audio files. Perhaps FreeSound API is not the right solution at this current time, but maybe in the future the quality of the library will change. Either way, some sort of audio related API would be a good addition to Kay. Alternatively, the collection of multiple audio files to a related object instance could be obtained and stored locally as before. A new functionality that randomly and alternately retrieves different associated audio responses to detected objects could be implemented.
+There are some aspects of Kay that could benefit from further development, the first being the object associated audio files. Perhaps FreeSound API is not the right solution at this current time, but maybe in the future the quality of the library will change. Either way, some sort of audio related API would be a good addition to Kay. Alternatively, the collection of multiple audio files to a related object instance could be obtained and stored locally as before. A new functionality that randomly and alternately retrieves different associated audio responses to detected objects could be implemented.
 
 Exploration of moving image is the a long-term goal of Kay. With this goal comes a mass of new hurdles and growing pains. Context of objects and the generation of key frames and semantic image analysis would be an important route of study before the implementation of any such features.
 
-Along with the expansion of audio, an expanded detected class list for images would benefit Kay greatly. The main priority of the Kay 1.0 was to provide a minimum viable product that articulates clearly a proof of concept. The current model can be trained on new classes for object detection in the future. Alternatively a new pretrained model could be substituted in for the current CNN, or a custom model could be created.
+Along with the expansion of audio, an expanded detected class list for images would benefit Kay greatly. The main priority of Kay 1.0 is to provide a minimum viable product that articulates clearly a proof of concept. The current model can be trained on new classes for object detection in the future. Alternatively a new pretrained model could be substituted in for the current CNN, or a custom model could be created.
 
 \pagebreak
 

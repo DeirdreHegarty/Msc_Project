@@ -250,17 +250,19 @@ $endif$
 \date{$date$}
 
 \begin{document}
-
 \begin{titlepage}
+
     \begin{center}
+    \vspace*{1cm}
+
         $if(title)$
           \huge
           \textbf{$title$}
         $endif$
 
-        
-          \LARGE
 
+          \LARGE
+          Adding Soundscapes to Imagery
 
 
         \vspace{0.5cm}
@@ -272,12 +274,15 @@ $endif$
             $author$$sep$ \and
           $endfor$
         $endif$
+        \normalsize
+
+        15187799
 
         \normalsize
         \vspace{1.5cm}
 
         Final Year Project
-        $if(year)$ - 2016$endif$\\
+        $if(year)$ - 2019$endif$\\
         $if(degree)$
           $degree$ in\\
         $endif$
@@ -325,6 +330,7 @@ $if(toc)$
   $endif$
   \setcounter{tocdepth}{$toc-depth$}
   \tableofcontents
+  \pagenumbering{roman}
   \pagebreak
 }
 $endif$
