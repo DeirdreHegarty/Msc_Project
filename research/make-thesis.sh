@@ -1,6 +1,7 @@
 #!/bin/bash
 
 pandoc --standalone \
+--pdf-engine=xelatex \
 	--template MaynoothUniversity.tex \
        	--bibliography bibliography.bib \
 	--csl ieee.csl \
