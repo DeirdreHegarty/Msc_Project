@@ -19,8 +19,8 @@ from sound_retrieval import trigger_sound
 app = Flask(__name__)
 app.debug = True
 CORS(app) # needed for cross-domain requests, allow everything by default
-
 dropzone = Dropzone(app)
+
 # Dropzone settings
 app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
 app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
@@ -51,19 +51,19 @@ def upload():
 	# clear any unsubmitted images from previous attempts
 	session.pop('file_urls', None)
 
-	print(session)
+
 	# image upload from Dropzone
 	if request.method == 'POST':
-		file_obj = request.files
-			
-		for f in file_obj:
 
+		file_obj = request.files
+
+		for f in file_obj:
 			file = request.files.get(f)
-			app.logger.debug(file.filename)
 			
 			# save the file & append image urls
-			filename = photos.save(file, name=file.filename)
+			filename = photos.save(file, name=file.filename.lower())
 			file_urls.append(photos.url(filename))
+
 
 		session['file_urls'] = file_urls	
 		

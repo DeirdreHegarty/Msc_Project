@@ -23,6 +23,16 @@ $endif$
 
 \usepackage[style=numeric]{biblatex}
 
+% Fixed figure location
+\usepackage{float}
+\let\origfigure=\figure
+\let\endorigfigure=\endfigure
+\renewenvironment{figure}[1][]{%
+  \origfigure[H]
+}{%
+  \endorigfigure
+}
+
 % if pdftex
 % fontfamily: $fontfamily$
 % fontfamilyoptions: $fontfamilyoptions$
