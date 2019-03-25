@@ -10,3 +10,4 @@ pandoc --standalone \
        -o /tmp/thesis.pdf \
        thesis_draft_1.md \
        && open /tmp/thesis.pdf
+
