@@ -159,6 +159,12 @@ def detect_image():
 	for image_path in TEST_IMAGE_PATHS:
 		image = Image.open(os.path.join(PATH_TO_TEST_IMAGES_DIR,image_path))
 
+		if (image_path[image_path.index("."):] == ".png"):
+			img = cv2.imread(os.path.join(PATH_TO_TEST_IMAGES_DIR,image_path))
+			cv2.imwrite(os.path.join(PATH_TO_TEST_IMAGES_DIR,image_path[:-3] + 'jpg'), img)
+			new_image_extension = image_path[:-3] + 'jpg'
+			image = Image.open(os.path.join(PATH_TO_TEST_IMAGES_DIR,new_image_extension))
+
 		# the array based representation of the image will be used later in order to prepare the
 		# result image with boxes and labels on it.
 		image_np = load_image_into_numpy_array(image)
