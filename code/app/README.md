@@ -1,4 +1,4 @@
-## Digital Foley Sound Artist
+## Kay: Adding Soundscapes to Imagery
 
 ![Result of application](docs/images/result2.png)
 
