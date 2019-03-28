@@ -1,33 +1,42 @@
 {% extends 'skeleton.html' %}
 
 {% block upload %}
-	<div id='uploadr1' class='row'>
-		<div id='col-info' class='col-md-6'>
-			<h3>Digital Foley Artist: Investigation of methods for adding soundscapes to imagery</h3>
-			<p>The intention of this project is to explore the relationship between audio and image. Synaesthesia describes the impression of one sense on another, whereas cognition can reflect a learned association of the same.</p>
-			<p>Using a machine learning framework and visual database, photographs will be broken down into their object content labels. These labels will describe what is present in each photograph. Once images have been analysed, an audio sample that best describes each label will be retrieved from a sound library. The result is to create an auditory explanation of the scene through sounds instead of words (spoken or other).</p>
-		</div>
-
-		<div id='col-dropzone' class='col-md-6'>{{ dropzone.create(action_view='upload') }}</div>
+<div id='uploadr1' class='row'>
+	<div id='col-info' class='col-md-6'>
+		<h3>
+			<img src="{{ url_for('static', filename='images/note.png')}}">
+			Let there be sound
+			<img src="{{ url_for('static', filename='images/note.png')}}">
+		</h3>
+		<p>With Kay you can hear your pictures. Simply choose an image containing one or more objects and let Kay do the rest!</p>
+		<img id="arrow" src="{{ url_for('static', filename='images/pngtreearrow.png')}}">
 	</div>
-	<div id='uploadr2' class='row'>
-		<div class='col-md-3'>
-			<a id="thesis2" href="/">
-				<img src="{{ url_for('static', filename='images/notebook.svg')}}">
-				<p>thesis</p>
-			</a>
-		</div>
-		<div class='col-md-3'>
-			<a id="sourcecode2" href="https://github.com/DeirdreHegarty/Msc_Project/tree/master/code/app" target='_blank'>
-				<img src="{{ url_for('static', filename='images/github.svg')}}">
-				<p>source code</p>
-			</a>
-		</div>
-		<div class='col-md-3'>
-			<a id="mu2" href="https://www.maynoothuniversity.ie/computer-science" target='_blank'>
-				<img src="{{ url_for('static', filename='images/college-graduation.svg')}}">
-				<p>M.U. computer sceince dept.</p>
-			</a>
-		</div>
+	<div id='col-dropzone' class='col-md-6'>{{ dropzone.create(action_view='upload') }}</div>
+</div>
+<div id="listen_row" class="row">
+	<div class="offset-md-1 col-md-5">
+		<img src="{{ url_for('static', filename='images/listening.png')}}">
 	</div>
+	<h3 class="col-md-5" class="offset-md-5" style="margin-top:10%">Why not wear headphones to get the full user experience?</h3>
+</div>
+<div id='uploadr2' class='row'>
+	<div class='col-md-3'>
+		<a id="thesis2" href="https://drive.google.com/open?id=1sFNBJl_6D-CgRNoS2KXJLfGdugtjleHT" target='_blank'>
+			<img src="{{ url_for('static', filename='images/notebook.svg')}}">
+			<p>thesis</p>
+		</a>
+	</div>
+	<div class='col-md-3'>
+		<a id="sourcecode2" href="https://github.com/DeirdreHegarty/Msc_Project/tree/master/code/app" target='_blank'>
+			<img src="{{ url_for('static', filename='images/github.svg')}}">
+			<p>source code</p>
+		</a>
+	</div>
+	<div class='col-md-3'>
+		<a id="mu2" href="https://www.maynoothuniversity.ie/computer-science" target='_blank'>
+			<img src="{{ url_for('static', filename='images/college-graduation.svg')}}">
+			<p>M.U. computer sceince dept.</p>
+		</a>
+	</div>
+</div>
 {% endblock upload%}

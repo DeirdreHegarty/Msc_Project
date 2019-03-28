@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>Digital Foley Artist</title>
+	<title>Kay - Home</title>
 	<!-- dropzone -->
 	{{ dropzone.load() }}
 	{{ dropzone.style('border: 7px dashed #FFA400; border-radius: 4px; margin: 10%; min-height: 400px;')  }}
@@ -31,29 +31,32 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='js/buffer-loader.js')}}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='js/audio_panning.js')}}"></script>
 	{% endif %}
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
 </head>
 <body>
 	{% block navbar %}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="{{ url_for('upload') }}"><img src="{{ url_for('static', filename='images/mulogo.png')}}"></a>
+		<a class="navbar-brand" href="{{ url_for('upload') }}">
+			<div id="triangle-topleft"></div>
+			<p>Kay</p>
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
+			<span class="navbar-toggler-icon"></span>
 		</button>
-	<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-		<ul class="navbar-nav">
-		<li class="nav-item">
-		  <a id='thesis' class="nav-link" href="#"><button class="btn btn-outline-danger nav-item" type="button">thesis</button></a>
-		</li>
-		<li class="nav-item">
-		  <a id='sourcecode' class="nav-link" href="https://github.com/DeirdreHegarty/Msc_Project/tree/master/code/app"><button class="btn btn-outline-warning nav-item" type="button">source code</button></a>
-		</li>
-		<li class="nav-item">
-		  <a id='mu' class="nav-link" href="https://www.maynoothuniversity.ie/computer-science"><button class="btn btn-outline-info nav-item" type="button">MU</button></a>
-		</li>
-	  </ul>
-	</div>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a id='thesis' class="nav-link" href="https://drive.google.com/open?id=1sFNBJl_6D-CgRNoS2KXJLfGdugtjleHT"><button class="btn btn-outline-danger nav-item" type="button">thesis</button></a>
+				</li>
+				<li class="nav-item">
+					<a id='sourcecode' class="nav-link" href="https://github.com/DeirdreHegarty/Msc_Project/tree/master/code/app"><button class="btn btn-outline-warning nav-item" type="button">source code</button></a>
+				</li>
+				<li class="nav-item">
+					<a id='mu' class="nav-link" href="https://www.maynoothuniversity.ie/computer-science"><button class="btn btn-outline-info nav-item" type="button">MU</button></a>
+				</li>
+			</ul>
+		</div>
 	</nav>
 	{% endblock %}
 	<div class="container">
